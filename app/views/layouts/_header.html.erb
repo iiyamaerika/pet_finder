@@ -1,14 +1,57 @@
 <header>
-  <% if user_signed_in? %>
-    <li>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    </li>
-  <% else %>
-    <li>
-      <%= link_to "新規登録", new_user_registration_path %>
-    </li>
-    <li>
-      <%= link_to "ログイン", new_user_session_path %>
-    </li>
-  <% end %>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-white">
+    
+    
+    <div class="container">
+      <a class="navbar-brand p-3" href="/"><%= image_tag 'logo.png', size: '300x100' %></a>
+      
+
+    <div class="header-name text-dark">
+      <% if user_signed_in? %>
+        ようこそ、<%= current_user.name %>さん！
+      <% end %>
+    </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          
+          <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '新規投稿フォーム', new_article_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "会員情報変更", edit_user_path(current_user.id), class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "いいねした投稿", article_favorites_path(current_user.id), class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "DM一覧", chats_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+          </li>
+          
+          <% else %>
+          
+          <li class="nav-item">
+            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      
+    </div>
+  </nav>
 </header>
