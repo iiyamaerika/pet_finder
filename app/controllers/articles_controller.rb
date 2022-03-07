@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  
+
   def index
   end
 
@@ -11,8 +11,9 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(articke_params)
-    if @article.save
+    article = Article.new(article_params)
+
+    if article.save
       redirect_to user_path(current_user)
     else
       render :new
@@ -27,11 +28,11 @@ class ArticlesController < ApplicationController
 
   def destroy
   end
-  
+
   private
-  
+
   def article_params
     params.require(:article).permit(:status, :image, :title, :date, :prefecture, :place, :animal_type, :animal_age, :animal_sex, :introduction).merge(user_id: current_user.id)
   end
-  
+
 end
