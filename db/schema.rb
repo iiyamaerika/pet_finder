@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_03_125314) do
+ActiveRecord::Schema.define(version: 2022_03_07_085741) do
 
   create_table "articles", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -21,11 +21,12 @@ ActiveRecord::Schema.define(version: 2022_03_03_125314) do
     t.string "prefecture", null: false
     t.string "place", null: false
     t.string "animal_type", null: false
-    t.integer "animal_age", null: false
     t.integer "animal_sex", default: 0, null: false
     t.text "introduction", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "animal_breed"
+    t.string "animal_age"
   end
 
   create_table "chats", force: :cascade do |t|
@@ -80,11 +81,11 @@ ActiveRecord::Schema.define(version: 2022_03_03_125314) do
     t.string "name_kana", null: false
     t.string "image"
     t.string "address", null: false
-    t.string "telephone_number"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "category", default: 0, null: false
+    t.string "telephone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
