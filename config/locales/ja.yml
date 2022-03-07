@@ -1,0 +1,16 @@
+ja:
+  enums:
+    article:
+      status:
+        lost: "迷子"
+        protection: "保護"
+        foster_homes: "里親募集"
+        solved: "解決済み"
+        
+ja:
+  enums:
+    article:
+      animal_sex:
+        male: "オス"
+        female: "メス"
+        unknown: "不明"
