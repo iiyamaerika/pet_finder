@@ -1,1 +1,51 @@
 <h2>新規投稿フォーム</h2>
+  <%= form_with model: @article do |f| %>
+    <h4>状況</h4>
+    <div>
+      <%= f.radio_button :status, "lost", checked: "checked" %>
+      <%= f.label :status, "迷子" %>
+      <br>
+      <%= f.radio_button :status, "protection" %>
+      <%= f.label :status, "保護" %>
+      <br>
+      <%= f.radio_button :status, "foster_homes" %>
+      <%= f.label :status, "里親募集" %>
+      <br>
+      <%= f.radio_button :status, "solved" %>
+      <%= f.label :status, "解決済み" %>
+    </div>
+    
+    <h4>画像</h4>
+      <%= f.file_field :image, accept: "image/*" %>
+      
+    <h4>タイトル</h4>
+      <%= f.text_field :title %>
+      
+    <h4>迷子になった・保護した日</h4>
+      <%= f.date_field :date %>
+    <p>（不明の場合は大体の日付記入してください）</p>
+    
+    <h4>対象の県</h4>
+      <%= f.text_field :prefecture %>
+      
+    <h4>迷子になった・保護した場所(詳細)</h4>
+      <%= f.text_field :place %>
+      
+    <h4>対象動物の性別</h4>
+      <div>
+        <%= f.radio_button :animal_sex, "male", checked: "checked" %>
+        <%= f.label :animal_sex, "オス" %>
+        <br>
+        <%= f.radio_button :animal_sex, "female" %>
+        <%= f.label :animal_sex, "メス" %>
+        <br>
+        <%= f.radio_button :animal_sex, "unknown" %>
+        <%= f.label :animal_sex, "不明" %>
+      </div>
+
+    <h4>説明</h4>
+      <%= f.text_area :introduction %>
+      
+    <%= f.submit '投稿' %>
+    
+  <% end %>
