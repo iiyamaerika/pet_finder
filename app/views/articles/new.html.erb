@@ -2,7 +2,6 @@
   <%= form_with model: @article do |f| %>
     <p>※は必須項目です。</p>
     <h4>状況※</h4>
-
     <div>
       <%= f.radio_button :status, "lost", checked: "checked" %>
       <%= f.label :status, "迷子" %>
@@ -18,7 +17,7 @@
     </div>
 
 
-    <h4>対象動物の画像※</h4>
+    <h4>対象動物の画像</h4>
       <%= f.file_field :image, accept: "image/*" %>
 
     <h4>タイトル※</h4>
@@ -42,7 +41,7 @@
 
     <h4>動物の種類</h4>
     <p>柴犬、マンチカン、インコ・・・etc</p>
-    <p><%= f.text_field :animal_feed %></p>
+    <%= f.text_field :animal_feed %>
 
     <h4>対象動物の性別※</h4>
       <div>

@@ -9,7 +9,7 @@ class Article < ApplicationRecord
 
   enum status: { lost: 0, protection: 1, foster_homes: 2, solved: 3 }
   enum animal_sex: { male: 0, female: 1, unknown: 2 }
-  
+
   validates :status, presence: true
   validates :title, presence: true
   validates :date, presence: true
@@ -19,8 +19,9 @@ class Article < ApplicationRecord
   validates :animal_sex, presence: true
   validates :animal_age, presence: true
   validates :introduction, presence: true
+  #画像なしでも投稿できるようにimageに対するバリデーションは無し
 
-
+  #投稿画像がない場合は"noimage.png"を表示させる
   def get_image(size)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/noimage.png')
