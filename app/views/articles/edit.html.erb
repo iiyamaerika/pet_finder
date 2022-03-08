@@ -1,2 +1,83 @@
-<h1>Articles#edit</h1>
-<p>Find me in app/views/articles/edit.html.erb</p>
+<%= form_with model: @article, local:true do |f| %>
+  <h4>状況※</h4>
+    <div class="form-group">
+      <%= f.radio_button :status, "lost", checked: "checked" %>
+      <%= f.label :status, "迷子" %>
+      <br>
+      <%= f.radio_button :status, "protection" %>
+      <%= f.label :status, "保護" %>
+      <br>
+      <%= f.radio_button :status, "foster_homes" %>
+      <%= f.label :status, "里親募集" %>
+      <br>
+      <%= f.radio_button :status, "solved" %>
+      <%= f.label :status, "解決済み" %>
+    </div>
+
+
+  <h4>対象動物の画像※</h4>
+    <div class="form-group">
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+
+  <h4>タイトル※</h4>
+    <div class="form-group">
+      <%= f.text_field :title, class: 'form-control' %> 
+    </div>
+
+  <h4>迷子になった・保護した日※</h4>
+    <div class="form-group">
+      <%= f.date_field :date, class: 'form-control' %>
+    </div>
+    <p>（不明の場合は大体の日付記入してください）</p>
+
+  <h4>対象の都道府県※</h4>
+    <div class="form-group">
+      <%= f.text_field :prefecture, class: 'form-control' %>
+    </div>
+    <p>都道府県までご記入ください</p>
+    <p>例：東京の場合→東京都</p>
+
+  <h4>迷子になった・保護した場所(詳細)※</h4>
+    <div class="form-group">
+      <%= f.text_field :place, class: 'form-control' %>
+    </div>
+
+  <h4>動物の分類※</h4>
+    <p>犬、猫、鳥・・・etc</p>
+    <div class="form-group">
+      <%= f.text_field :animal_type, class: 'form-control' %>
+    </div>
+
+  <h4>動物の種類</h4>
+    <p>柴犬、マンチカン、インコ・・・etc</p>
+    <div class="form-group">
+      <%= f.text_field :animal_feed, class: 'form-control' %>
+    </div>
+
+  <h4>対象動物の性別※</h4>
+    <div class="form-group">
+      <%= f.radio_button :animal_sex, "male", checked: "checked" %>
+      <%= f.label :animal_sex, "オス" %>
+      <br>
+      <%= f.radio_button :animal_sex, "female" %>
+      <%= f.label :animal_sex, "メス" %>
+      <br>
+      <%= f.radio_button :animal_sex, "unknown" %>
+      <%= f.label :animal_sex, "不明" %>
+    </div>
+
+  <h4>動物の年齢(およそ)※</h4>
+    <div class="form-group">
+      <%= f.select :animal_age, [["不明", "不明"], ["0~3才", "0~3才"],["4~6才", "4~6才"],["7~9才", "7~9才"],["10才以上", "10才以上"]], {include_blank: '年齢選択'}, class: 'form-control' %>
+    </div>
+
+  <h4>説明※</h4>
+    <div class="form-group">
+      <%= f.text_area :introduction, class: 'form-control' %>
+    </div>
+  
+  <div class="form-group">
+    <%= f.submit %>
+  </div>
+<% end %>
