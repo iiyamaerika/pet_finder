@@ -1,2 +1,15 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<h2>投稿詳細</h2>
+<div>
+  <%= image_tag @article.get_image("500x500") %>
+  <p>タイトル：<%= @article.title %></p>
+  <p>状況：<%= @article.status %></p>
+  <p>迷子になった・保護した日：<%= @article.date %></p>
+  <p>対象の都道府県：<%= @article.prefecture %></p>
+  <p>迷子になった・保護した場所(詳細)：<%= @article.place %></p>
+  <p>動物の分類：<%= @article.animal_type %></p>
+  <p>動物の種類：<%= @article.animal_breed %></p>
+  <p>対象動物の性別：<%= @article.animal_sex_i18n %></p>　
+  <p>動物の年齢(およそ)：<%= @article.animal_age %></p>
+  <p>説明：<%= @article.introduction %></p>
+  <p>投稿日時：<%= @article.created_at.strftime('%Y/%m/%d') %></p>
+</div>

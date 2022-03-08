@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article = Article.find(params[:id])
   end
 
   def new
@@ -12,9 +13,8 @@ class ArticlesController < ApplicationController
 
   def create
     article = Article.new(article_params)
-
     if article.save
-      redirect_to user_path(current_user)
+      redirect_to article_path(article.id)
     else
       render :new
     end
@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:status, :image, :title, :date, :prefecture, :place, :animal_type, :animal_age, :animal_sex, :introduction).merge(user_id: current_user.id)
+    params.require(:article).permit(:status, :image, :title, :date, :prefecture, :place, :animal_type, :animal_sex, :animal_age, :animal_breed, :introduction).merge(user_id: current_user.id)
   end
 
 end
