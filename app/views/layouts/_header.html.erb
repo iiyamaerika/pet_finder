@@ -25,6 +25,9 @@
             <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-dark' %>
           </li>
           <li class="nav-item">
+            <%= link_to "迷子・保護・里親募集一覧", articles_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
             <%= link_to '新規投稿フォーム', new_article_path, class: 'nav-link text-dark' %>
           </li>
           <li class="nav-item">
