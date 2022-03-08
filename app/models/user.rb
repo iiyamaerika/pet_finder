@@ -24,6 +24,19 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :name_kana, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
-  
+  #ユーザー情報変更の際に現在のパスワードはパラメーター内で不要となり、
+  #かつパスワードとパスワードの確認を空とした場合、パスワードの更新はなされなくなる
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+
+    if params[:password].blank? && params[:password_confirmation].blank? 
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+
+    result = update(params, *options)
+    clean_up_passwords
+    result
+  end
 
 end
