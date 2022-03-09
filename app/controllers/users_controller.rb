@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @articles = current_user.articles
-    
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -27,9 +27,9 @@ class UsersController < ApplicationController
       render "edit"
     end
   end
-  
+
   def shelter
     @shelter_users = User.shelter
   end
-  
+
 end
