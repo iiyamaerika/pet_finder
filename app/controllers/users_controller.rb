@@ -2,12 +2,11 @@ class UsersController < ApplicationController
 
   def index
     @shelter_users = User.shelter
-
-
   end
 
   def show
     @articles = current_user.articles
+    
   end
 
   def edit
@@ -28,4 +27,9 @@ class UsersController < ApplicationController
       render "edit"
     end
   end
+  
+  def shelter
+    @shelter_users = User.shelter
+  end
+  
 end
