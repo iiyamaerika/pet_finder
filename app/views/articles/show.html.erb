@@ -17,5 +17,9 @@
     <%= link_to "編集", edit_article_path(@article)%>
     <%= link_to "削除", article_path(@article), method: :delete %>
   <% end %>
+  
+  <h2>コメント</h2>
+  <%= render 'post_comments/index' , article: @article %>
+  <%= render 'post_comments/form' , article: @article, post_comment: @post_comment %>
 
 </div>
