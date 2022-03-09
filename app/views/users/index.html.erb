@@ -1,5 +1,4 @@
 <h2>施設一覧</h2>
-
   <% @shelter_users.each do |user| %>
     <%= link_to user_shelter_path(user) do %>
       <%= image_tag user.get_image("200x300") %>
