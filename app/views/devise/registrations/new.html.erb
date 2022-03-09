@@ -2,6 +2,7 @@
 
 <%= form_with model: @user, url: user_registration_path do |f| %>
 
+  <p>※保護施設で登録した場合、施設名（カナ含）・電話番号・住所は公開される情報になります。</p>
   <div class="field">
     <%= f.radio_button :category, "private_user", checked: "checked" %>
     <%= f.label :category, "個人ユーザー" %>

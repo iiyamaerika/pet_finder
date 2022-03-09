@@ -1,6 +1,14 @@
 <h1>マイページ</h1>
-<% @articles.each do |article| %>
 
+<h2>ユーザー情報</h2>
+  <div>
+    <%= image_tag @user.get_image("200x300") %>
+    <p>名前：<%= @user.name %></p>
+    <p>サイト登録日<%= @user.created_at.strftime('%Y/%m/%d') %></p>
+  </div>
+
+<h2>ユーザーの投稿</h2>
+<% @articles.each do |article| %>
   <div>
     <%= link_to article_path(article.id) do %>
       <%= image_tag article.get_image("200x300") %>
@@ -11,5 +19,4 @@
     <%= article.introduction %>
     <%= article.created_at.strftime('%Y/%m/%d') %>
   </div>
-  
 <% end %>
