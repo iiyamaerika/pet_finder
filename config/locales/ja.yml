@@ -14,3 +14,10 @@ ja:
         male: "オス"
         female: "メス"
         unknown: "不明"
+        
+ja:
+    enums:
+      user:
+        category:
+          private_user: "個人ユーザー"
+          shelter: "保護施設"
