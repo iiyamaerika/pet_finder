@@ -31,7 +31,7 @@
             <%= link_to '新規投稿フォーム', new_article_path, class: 'nav-link text-dark' %>
           </li>
           <li class="nav-item">
-            <%= link_to "会員情報変更", edit_user_path(current_user.id), class: 'nav-link text-dark' %>
+            <%= link_to "会員情報変更", edit_user_registration_path(current_user.id), class: 'nav-link text-dark' %>
           </li>
           <li class="nav-item">
             <%= link_to "いいねした投稿", article_favorites_path(current_user.id), class: 'nav-link text-dark' %>

@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   
   root to: 'homes#top'
   get "home/about"=>"homes#about",as: 'about'
   
   resources :users, only: [:index, :show, :edit, :update]do
     resource :relationships, only: [:create, :destroy]
+    get 'shelter' => 'users#shelter', as: 'shelter'
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
