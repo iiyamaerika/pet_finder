@@ -1,1 +1,8 @@
 <h2>施設一覧</h2>
+
+  <% @shelter_users.each do |user| %>
+      <%= image_tag user.get_image("200x300") %>
+      <%= user.name %>
+      <%= user.address %>
+      <%= user.telephone_number %>
+  <% end %>

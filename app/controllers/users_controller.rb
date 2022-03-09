@@ -1,4 +1,11 @@
 class UsersController < ApplicationController
+
+  def index
+    @shelter_users = User.shelter
+
+
+  end
+
   def show
     @articles = current_user.articles
   end

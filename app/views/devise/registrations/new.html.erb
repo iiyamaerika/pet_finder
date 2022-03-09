@@ -3,6 +3,14 @@
 <%= form_with model: @user, url: user_registration_path do |f| %>
 
   <div class="field">
+    <%= f.radio_button :category, "private_user", checked: "checked" %>
+    <%= f.label :category, "個人ユーザー" %>
+    <br>
+    <%= f.radio_button :category, "shelter" %>
+    <%= f.label :category, "保護施設" %>
+  </div>
+
+  <div class="field">
     <%= f.label :お名前or施設名称 %><br>
     <%= f.text_field :name %>
   </div>
@@ -38,6 +46,11 @@
   <div class="field">
     <%= f.label :パスワード（確認用） %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :ユーザー画像 %><br>
+    <%= f.file_field :image %>
   </div>
 
   <div class="actions">

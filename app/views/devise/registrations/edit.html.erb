@@ -4,6 +4,14 @@
   <%= render "devise/shared/error_messages", resource: resource %>
   
   <div class="form-group">
+    <%= f.radio_button :category, "private_user", checked: "checked" %>
+    <%= f.label :category, "個人ユーザー" %>
+    <br>
+    <%= f.radio_button :category, "shelter" %>
+    <%= f.label :category, "保護施設" %>
+  </div>
+  
+  <div class="form-group">
     <%= f.label :お名前or施設名称 %><br>
     <%= f.text_field :name, class: 'form-control user-name' %>
   </div>
@@ -26,6 +34,11 @@
   <div class="form-group">
     <%= f.label :住所 %><br>
     <%= f.text_field :address, class: 'form-control user-address' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :ユーザー画像 %><br>
+    <%= f.file_field :image %>
   </div>
   
   <div class="field">
