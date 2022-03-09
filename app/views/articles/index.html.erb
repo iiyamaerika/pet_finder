@@ -1,16 +1,2 @@
 <h1>投稿一覧</h1>
-
-<% @articles.each do |article| %>
-
-  <div>
-    <%= link_to article_path(article.id) do %>
-      <%= image_tag article.get_image("200x300") %>
-    <% end %>
-    <%= article.status_i18n %>
-    <%= article.title %>
-    <%= article.place %>
-    <%= article.introduction %>
-    <%= article.created_at.strftime('%Y/%m/%d') %>
-  </div>
-  
-<% end %>
+<%= render 'article_outline', articles: @articles %>
