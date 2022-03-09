@@ -17,5 +17,15 @@
     <%= link_to "編集", edit_article_path(@article)%>
     <%= link_to "削除", article_path(@article), method: :delete %>
   <% end %>
+  
+  <h2>コメント</h2>
+  <%= render 'post_comments/index' , article: @article %>
+
+<div>
+  <%= form_with model: [@article, @post_comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
 
 </div>

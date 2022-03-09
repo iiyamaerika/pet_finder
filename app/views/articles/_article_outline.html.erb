@@ -3,10 +3,11 @@
     <%= link_to article_path(article.id) do %>
       <%= image_tag article.get_image("200x300") %>
     <% end %>
-    <%= article.status_i18n %>
-    <%= article.title %>
-    <%= article.place %>
-    <%= article.introduction %>
-    <%= article.created_at.strftime('%Y/%m/%d') %>
+    <p><%= article.status_i18n %></p>
+    <p><%= article.title %></p>
+    <p><%= article.place %></p>
+    <p><%= article.introduction %></p>
+    <p><%= article.created_at.strftime('%Y/%m/%d') %></p>
+    <p>コメント件数：<%= article.post_comments.count %></p>
   </div>
 <% end %>
