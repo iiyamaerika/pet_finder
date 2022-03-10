@@ -1,8 +1,11 @@
 <% articles.each do |article| %>
-  <div>
+  <div id="article_<%= article.id %>" >
     <%= link_to article_path(article.id) do %>
       <%= image_tag article.get_image("200x300") %>
     <% end %>
+    <div class="faborite-btn">
+      <%= render "favorites/favorite_btn", article: article %>
+    </div>
     <p><%= article.status_i18n %></p>
     <p><%= article.title %></p>
     <p><%= article.place %></p>

@@ -29,5 +29,11 @@ class Article < ApplicationRecord
     end
       image.variant(resize: size).processed
   end
+  
+  #いいね機能
+  def favorited_by?(user)
+    favorites.exists?(user_id: user_id)
+  end
+  
 
 end

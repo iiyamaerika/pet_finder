@@ -1,5 +1,5 @@
 class PostCommentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user! #ログインユーザーのみコメント可能
   
   def create
     article = Article.find(params[:article_id])
