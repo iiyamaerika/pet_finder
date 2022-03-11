@@ -1,10 +1,10 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-white">
-    
-    
+
+
     <div class="container">
       <a class="navbar-brand p-3" href="/"><%= image_tag 'logo.png', size: '300x100' %></a>
-      
+
 
     <div class="header-name text-dark">
       <% if user_signed_in? %>
@@ -19,7 +19,7 @@
 
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-          
+
           <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-dark' %>
@@ -39,12 +39,18 @@
           <li class="nav-item">
             <%= link_to "DM一覧", chats_path, class: 'nav-link text-dark' %>
           </li>
+          <% if unchecked_notifications.any? %>
+            <i class="fas fa-circle"  style="color: gold;"></i>
+          <% end %>
+          <li class="nav-item">
+            <%= link_to "通知一覧", notifications_path, class: 'nav-link text-dark' %>
+          </li>
           <li class="nav-item">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
           </li>
-          
+
           <% else %>
-          
+
           <li class="nav-item">
             <%= link_to "迷子・保護・里親募集一覧", articles_path, class: 'nav-link text-dark' %>
           </li>
@@ -63,7 +69,7 @@
           <% end %>
         </ul>
       </div>
-      
+
     </div>
   </nav>
 </header>
