@@ -1,7 +1,7 @@
 <h2>投稿詳細</h2>
 <div id="article_<%= @article.id %>" >
   <%= image_tag @article.get_image("400x400") %>
-  <div class="faborite-btn">
+  <div class="favorite-btn">
     <%= render "favorites/favorite_btn", article: @article %>
   </div>
   <p>タイトル：<%= @article.title %></p>
