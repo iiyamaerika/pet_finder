@@ -4,7 +4,6 @@ class Article < ApplicationRecord
   has_one_attached :image
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
-  has_many :favorites_users, through: :favorites, source: :user
 
 
   enum status: { lost: 0, protection: 1, foster_homes: 2, solved: 3 }
@@ -29,5 +28,11 @@ class Article < ApplicationRecord
     end
       image.variant(resize: size).processed
   end
+  
+  #いいね機能
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+  
 
 end
