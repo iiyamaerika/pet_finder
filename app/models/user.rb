@@ -10,6 +10,10 @@ class User < ApplicationRecord
   # いいね・コメント機能
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  
+  #通知機能
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy #自分からの通知
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy #相手からの通知
 
   # フォロー・フォロワー機能
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
