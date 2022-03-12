@@ -4,6 +4,8 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    @search = Article.ransack(params[:q]) #検索機能で使用
+    @search_articles = @search.result(distinct: true) #検索結果表示で使用
   end
 
   def show
