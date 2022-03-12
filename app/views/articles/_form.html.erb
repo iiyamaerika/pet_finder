@@ -27,18 +27,29 @@
     <p>（不明の場合は大体の日付記入してください）</p>
 
     <h4>対象の都道府県※</h4>
-      <%= f.collection_select :prefecture, JpPrefecture::Prefecture.all,:name, :name, {:prompt => true} %>
+      <%= f.collection_select :prefecture, JpPrefecture::Prefecture.all,:name, :name, {:prompt => "選択してください"} %>
 
     <h4>迷子になった・保護した場所(詳細)※</h4>
       <%= f.text_field :place %>
 
     <h4>動物の分類※</h4>
-    <p>犬、猫、鳥・・・etc</p>
-      <%= f.text_field :animal_type %>
+    <div>
+        <%= f.radio_button :animal_type, "犬", checked: "checked" %>
+        <%= f.label :animal_type, "犬" %>
+        <br>
+        <%= f.radio_button :animal_type, "猫" %>
+        <%= f.label :animal_type, "猫" %>
+        <br>
+        <%= f.radio_button :animal_type, "爬虫類" %>
+        <%= f.label :animal_type, "爬虫類" %>
+        <br>
+        <%= f.radio_button :animal_type, "その他" %>
+        <%= f.label :animal_type, "その他" %>
+      </div>
 
     <h4>動物の種類</h4>
     <p>柴犬、マンチカン、インコ・・・etc</p>
-    <%= f.text_field :animal_feed %>
+    <%= f.text_field :animal_breed %>
 
     <h4>対象動物の性別※</h4>
       <div>
