@@ -57,8 +57,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-
 gem "enum_help"
+gem 'ransack'
+gem 'jp_prefecture'
 
 gem 'dotenv-rails'
 group :production do

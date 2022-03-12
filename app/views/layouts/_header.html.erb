@@ -70,6 +70,15 @@
         </ul>
       </div>
 
+  <%= search_form_for @q, url: searches_search_path, class: "search-form" do |f| %>
+  <%= f.search_field :title_or_introduction_cont, placeholder: 'キーワードから探す', class: 'input-box' %>
+  <%= f.collection_select :prefecture_eq, JpPrefecture::Prefecture.all, :name, :name, { include_blank: '対象地域' }, { class: 'custom-select' } %>
+    <!--都道府県のセレクトボックスなので_eqで完全一致にする-->
+    <%= f.button type: "submit", class: "search-button" do %>
+      <i class="fas fa-search"></i>
+    <% end %>
+  <% end %>
+
     </div>
   </nav>
 </header>
