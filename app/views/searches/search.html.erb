@@ -1,3 +1,4 @@
+<%= render 'searches/search_form', q: @q %>
 <% if @q.title_or_introduction_or_animal_breed_or_place_or_animal_type_cont != nil %>
   <h3 class="subtitle"><%= "#{@q.title_or_introduction_or_animal_breed_or_place_or_animal_type_cont} の検索結果" %></h3>
 <% else %>

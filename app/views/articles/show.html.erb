@@ -1,3 +1,4 @@
+<%= render 'searches/search_form', q: @q %>
 <h2>投稿詳細</h2>
 <div id="article_<%= @article.id %>" >
   <%= image_tag @article.get_image("400x400") %>
