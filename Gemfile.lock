@@ -105,6 +105,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jp_prefecture (1.0.0)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -169,6 +170,10 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
     rake (13.0.6)
+    ransack (2.6.0)
+      activerecord (>= 6.0.4)
+      activesupport (>= 6.0.4)
+      i18n
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -246,12 +251,14 @@ DEPENDENCIES
   enum_help
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
+  jp_prefecture
   listen (~> 3.3)
   mysql2
   pry-rails
   puma (~> 3.11)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.6)
+  ransack
   sass-rails (>= 6)
   selenium-webdriver
   spring
