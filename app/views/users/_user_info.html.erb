@@ -1,6 +1,7 @@
 <%= form_with model: user do |f| %>  
   <div>
     <%= image_tag user.get_image("200x300") %>
+    <p>カテゴリー：<%= user.category_i18n %></p>
     <p>名前：<%= user.name %></p>
     <p>サイト登録日<%= user.created_at.strftime('%Y/%m/%d') %></p>
   </div>

@@ -6,23 +6,14 @@ ja:
         protection: "保護"
         foster_homes: "里親募集"
         solved: "解決済み"
-
-ja:
-  enums:
-    article:
       animal_sex:
         male: "オス"
         female: "メス"
         unknown: "不明"
-        
-ja:
-    enums:
-      user:
-        category:
-          private_user: "個人ユーザー"
-          shelter: "保護施設"
-
-ja:
+    user:
+      category:
+        private_user: "個人ユーザー"
+        shelter: "保護施設"
   datetime:
     distance_in_words:
       half_a_minute: "30秒前後"

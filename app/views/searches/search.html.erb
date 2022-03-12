@@ -1,5 +1,5 @@
-<% if @q.title_cont != nil %>
-  <h3 class="subtitle"><%= "#{@q.title_cont} の検索結果" %></h3>
+<% if @q.title_or_introduction_or_animal_breed_or_place_or_animal_type_cont != nil %>
+  <h3 class="subtitle"><%= "#{@q.title_or_introduction_or_animal_breed_or_place_or_animal_type_cont} の検索結果" %></h3>
 <% else %>
   <h3 class="subtitle"><%= "検索結果" %></h3>
 <% end %>
