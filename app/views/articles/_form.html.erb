@@ -27,9 +27,7 @@
     <p>（不明の場合は大体の日付記入してください）</p>
 
     <h4>対象の都道府県※</h4>
-      <%= f.text_field :prefecture %>
-      <p>都道府県までご記入ください</p>
-      <p>例：東京の場合→東京都</p>
+      <%= f.collection_select :prefecture, JpPrefecture::Prefecture.all,:name, :name, {:prompt => true} %>
 
     <h4>迷子になった・保護した場所(詳細)※</h4>
       <%= f.text_field :place %>
