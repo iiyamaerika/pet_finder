@@ -1,6 +1,12 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
   
+  def show
+    favorites = Favorite.where(user_id: current_user.id).pluck(:article_id)
+    @favorite_articles = Article.find(favorites)
+    
+  end
+  
   def create
     @article = Article.find(params[:article_id])
     favorite = @article.favorites.new(user_id: current_user.id)

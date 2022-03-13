@@ -6,11 +6,13 @@ class ArticlesController < ApplicationController
     @articles = Article.all
     @search = Article.ransack(params[:q]) #検索機能で使用
     @search_articles = @search.result(distinct: true) #検索結果表示で使用
+    @q = Article.ransack(params[:q])
   end
 
   def show
     @article = Article.find(params[:id])
     @post_comment = PostComment.new
+    @q = Article.ransack(params[:q])
   end
 
   def new
