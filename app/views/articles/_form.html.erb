@@ -31,6 +31,78 @@
 
     <h4>迷子になった・保護した場所(詳細)※</h4>
       <%= f.text_field :place %>
+    <h4>地図追加</h4>
+
+      <p>地名を検索してください</p>
+      <input id="address" type="textbox" value="地名">
+      <input type="button" value="検索" onclick="codeAddress()">
+      <p>マーカーをドラック＆ドロップで位置の調整ができます。<p>
+      <div id='map'></div>
+
+      <style>
+      #map {
+        height: 400px;
+        width: 600px;
+      }
+      </style>
+
+      <script>
+      // 初期マップの設定
+      let map
+      let marker
+      function initMap(){
+        geocoder = new google.maps.Geocoder()
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center:  {lat: 35.6803997, lng:139.7690174},  //東京
+          zoom: 15,
+
+        });
+      }
+
+      // 検索後のマップ作成
+      let geocoder
+      let aft
+      function codeAddress(){
+        let inputAddress = document.getElementById('address').value;
+        geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+          if (status == 'OK') {
+
+              if (aft == true){
+                  marker.setMap(null);
+              }
+
+              map.setCenter(results[0].geometry.location);
+                  marker = new google.maps.Marker({
+                  map: map,
+                  position: results[0].geometry.location,
+                  draggable: true
+              });
+
+              aft = true
+
+              //検索した時に緯度経度を入力する
+              document.getElementById('lat').value = results[0].geometry.location.lat();
+              document.getElementById('lng').value = results[0].geometry.location.lng();
+
+              // マーカーのドロップ（ドラッグ終了）時のイベント
+              google.maps.event.addListener( marker, 'dragend', function(ev){
+
+                  document.getElementById('lat').value = ev.latLng.lat();
+                  document.getElementById('lng').value = ev.latLng.lng();
+              });
+          } else {
+            alert('該当する結果がありませんでした：' + status);
+          }
+        });
+      }
+
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+
+      <%= f.text_field :lat,:value =>"緯度が表示されます", id: :lat %>
+      <%= f.text_field :lng,:value =>"経度が表示されます", id: :lng %>
+
 
     <h4>動物の分類※</h4>
     <div>
