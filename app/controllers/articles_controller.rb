@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :ensure_correct_user, only: [:update, :edit, :destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.all.order(created_at: :desc)
     @search = Article.ransack(params[:q]) #検索機能で使用
     @search_articles = @search.result(distinct: true) #検索結果表示で使用
     @q = Article.ransack(params[:q])
@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:status, :image, :title, :date, :prefecture, :place, :animal_type, :animal_sex, :animal_age, :animal_breed, :introduction)
+    params.require(:article).permit(:status, :image, :title, :date, :prefecture, :place, :animal_type, :animal_sex, :animal_age, :animal_breed, :introduction, :lat, :lng)
   end
 
   def ensure_correct_user

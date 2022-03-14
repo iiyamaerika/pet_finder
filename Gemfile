@@ -61,6 +61,9 @@ gem "enum_help"
 gem 'ransack'
 gem 'jp_prefecture'
 
+gem "gmaps4rails"
+gem "geocoder"
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

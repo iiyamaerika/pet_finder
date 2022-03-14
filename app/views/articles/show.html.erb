@@ -10,6 +10,48 @@
   <p>迷子になった・保護した日：<%= @article.date %></p>
   <p>対象の都道府県：<%= @article.prefecture %></p>
   <p>迷子になった・保護した場所(詳細)：<%= @article.place %></p>
+  
+  <% if !@article.lat.nil? or !@article.lng.nil? %>
+  <div id='map'></div>
+  <style>
+  #map {
+    height: 400px;
+    width: 600px;
+  }
+  </style>
+
+  <script>
+    let map
+
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+      var post_map ={lat: <%= @article.lat %>, lng: <%= @article.lng %>};
+
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: post_map,
+        zoom: 15,
+      });
+
+      var contentString = '住所：<%= @article.place %>';
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+
+      circle = new google.maps.Circle({
+        position:  post_map,
+        map: map,
+        center: {lat: <%= @article.lat %>, lng: <%= @article.lng %>},
+        radius: 500,
+      });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+
+    <p>※地図上の円は半径500mの範囲です</p>
+    <p>【参考】<br>
+    犬の１日の移動距離は約300ｍ～１km程度です。<br>
+    室内飼いの猫の場合は半径50ｍ以内にいることが多いようです。</p>
+  <% end %>
   <p>動物の分類：<%= @article.animal_type %></p>
   <p>動物の種類：<%= @article.animal_breed %></p>
   <p>対象動物の性別：<%= @article.animal_sex_i18n %></p>
