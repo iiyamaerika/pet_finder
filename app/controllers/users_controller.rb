@@ -18,7 +18,6 @@ class UsersController < ApplicationController
       end
   end
 
-
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -31,5 +30,17 @@ class UsersController < ApplicationController
   def shelter
     @shelter_users = User.shelter
   end
+  
+  def unsubscribe
+  end
+  
+  def withdraw
+    user = current_user
+    user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
+  end
+  
 
 end
