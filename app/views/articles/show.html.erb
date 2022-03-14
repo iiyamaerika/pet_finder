@@ -13,7 +13,34 @@
   
   <% if !@article.lat.nil? or !@article.lng.nil? %>
   <div id='map'></div>
-  <style>
+    <p>※地図上の円は半径500mの範囲です</p>
+    <p>【参考】<br>
+    犬の１日の移動距離は約300ｍ～１km程度です。<br>
+    室内飼いの猫の場合は半径50ｍ以内にいることが多いようです。</p>
+  <% end %>
+  
+  <p>動物の分類：<%= @article.animal_type %></p>
+  <p>動物の種類：<%= @article.animal_breed %></p>
+  <p>対象動物の性別：<%= @article.animal_sex_i18n %></p>
+  <p>動物の年齢(およそ)：<%= @article.animal_age %></p>
+  <p>説明：<%= @article.introduction %></p>
+  <p>投稿日時：<%= @article.created_at.strftime('%Y/%m/%d') %></p>
+
+  <% if @article.user == current_user %>
+    <%= link_to "編集", edit_article_path(@article)%>
+    <%= link_to "削除", article_path(@article), method: :delete %>
+  <% end %>
+
+
+  <h2>コメント</h2>
+  <%= render 'post_comments/index' , article: @article %>
+  <%= render 'post_comments/form' , article: @article, post_comment: @post_comment %>
+
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+
+<style>
   #map {
     height: 400px;
     width: 600px;
@@ -45,28 +72,4 @@
       });
     }
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
 
-    <p>※地図上の円は半径500mの範囲です</p>
-    <p>【参考】<br>
-    犬の１日の移動距離は約300ｍ～１km程度です。<br>
-    室内飼いの猫の場合は半径50ｍ以内にいることが多いようです。</p>
-  <% end %>
-  <p>動物の分類：<%= @article.animal_type %></p>
-  <p>動物の種類：<%= @article.animal_breed %></p>
-  <p>対象動物の性別：<%= @article.animal_sex_i18n %></p>
-  <p>動物の年齢(およそ)：<%= @article.animal_age %></p>
-  <p>説明：<%= @article.introduction %></p>
-  <p>投稿日時：<%= @article.created_at.strftime('%Y/%m/%d') %></p>
-
-  <% if @article.user == current_user %>
-    <%= link_to "編集", edit_article_path(@article)%>
-    <%= link_to "削除", article_path(@article), method: :delete %>
-  <% end %>
-
-
-  <h2>コメント</h2>
-  <%= render 'post_comments/index' , article: @article %>
-  <%= render 'post_comments/form' , article: @article, post_comment: @post_comment %>
-
-</div>
