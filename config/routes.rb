@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     get 'shelter' => 'users#shelter', as: 'shelter'
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    get 'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
+    patch 'withdraw', to: 'users#withdraw', as: 'withdraw'
   end
   
   resources :articles, only: [:index, :show, :edit, :new, :create, :destroy, :update] do

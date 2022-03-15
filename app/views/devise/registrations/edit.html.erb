@@ -2,7 +2,7 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  
+
   <div class="form-group">
     <%= f.radio_button :category, "private_user", checked: "checked" %>
     <%= f.label :category, "個人ユーザー" %>
@@ -10,12 +10,12 @@
     <%= f.radio_button :category, "shelter" %>
     <%= f.label :category, "保護施設" %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label :お名前or施設名称 %><br>
     <%= f.text_field :name, class: 'form-control user-name' %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label :お名前or施設名称（カナ） %><br>
     <%= f.text_field :name_kana, class: 'form-control user-name-kana' %>
@@ -25,22 +25,22 @@
     <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label :電話番号（ハイフンなし） %><br>
     <%= f.text_field :telephone_number, class: 'form-control user-telephone-number' %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label :住所 %><br>
     <%= f.text_field :address, class: 'form-control user-address' %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label :ユーザー画像 %><br>
     <%= f.file_field :image %>
   </div>
-  
+
   <div class="field">
     <%= f.label :パスワード %> <i>(変更したくない場合は空白のままにしてください。)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
@@ -59,5 +59,7 @@
     <%= f.submit "更新" %>
   </div>
 <% end %>
+
+<%= link_to '退会する', user_unsubscribe_path(current_user) %>
 
 <%= link_to "Back", :back %>
