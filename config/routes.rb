@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get "home/about"=>"homes#about",as: 'about'
   get 'searches/search'
+  # get '/users/:id/shelter' => 'users#shelter', as: 'shelter'
   
   resources :users, only: [:index, :show, :edit, :update]do
     resource :relationships, only: [:create, :destroy]

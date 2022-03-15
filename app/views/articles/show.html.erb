@@ -11,7 +11,7 @@
   <p>対象の都道府県：<%= @article.prefecture %></p>
   <p>迷子になった・保護した場所(詳細)：<%= @article.place %></p>
   
-  <% if !@article.lat.nil? or !@article.lng.nil? %>
+  <% if !@article.lat == 0 or !@article.lng == 0 %>
   <div id='map'></div>
     <p>※地図上の円は半径500mの範囲です</p>
     <p>【参考】<br>

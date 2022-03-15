@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   
   def show
     favorites = Favorite.where(user_id: current_user.id).pluck(:article_id)
-    @favorite_articles = Article.with_attached_image.find(favorites)
+    @favorite_articles = Article.with_attached_image.order(created_at: :desc).find(favorites)
     
   end
   

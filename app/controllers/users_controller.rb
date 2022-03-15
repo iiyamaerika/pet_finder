@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def shelter
     @user = User.find(params[:user_id])
     @articles = @user.articles.with_attached_image.order(created_at: :desc)
+
   end
 
   def unsubscribe
