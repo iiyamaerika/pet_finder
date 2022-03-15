@@ -1,2 +1,3 @@
 <h2>いいねした投稿一覧</h2>
 <%= render 'articles/article_outline', articles: @favorite_articles %>
+<%= paginate @favorite_articles %>

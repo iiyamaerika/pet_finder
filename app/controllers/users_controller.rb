@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @shelter_users = User.shelter
+    @shelter_users = User.shelter.with_attached_image.includes([:image_attachment]).page(params[:page]).per(6)
   end
 
   def show
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def shelter
     @user = User.find(params[:user_id])
-    @articles = @user.articles.with_attached_image.order(created_at: :desc)
+    @articles = @user.articles.with_attached_image.order(created_at: :desc).page(params[:page]).per(6)
 
   end
 

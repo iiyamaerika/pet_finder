@@ -61,6 +61,7 @@ gem 'devise'
 gem "enum_help"
 gem 'ransack'
 gem 'jp_prefecture'
+gem 'kaminari','~> 1.2.1'
 
 gem "gmaps4rails"
 gem "geocoder"

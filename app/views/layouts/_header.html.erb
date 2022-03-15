@@ -73,6 +73,7 @@
         </ul>
       </div>
 
+  
   <%= search_form_for @q, url: searches_search_path, class: "search-form" do |f| %>
   <%= f.search_field :title_or_introduction_or_animal_breed_or_place_or_animal_type_cont, placeholder: 'キーワードから探す' %>
     <%= f.button type: "submit" do %>

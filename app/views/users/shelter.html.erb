@@ -7,28 +7,11 @@
     <p>電話番号：<%= @user.telephone_number %></p>
     <p>サイト登録日<%= @user.created_at.strftime('%Y/%m/%d') %></p>
   </div>
-  
+
 
   <div>
-    <%# render 'articles/article_outline', articles: @articles %>
+    <h2>投稿記事一覧</h2>
+    <%= render 'articles/article_outline', articles: @articles %>
   </div>
-  
-  <h2>投稿記事一覧</h2>
-  <% @articles.each do |article| %>
-  <div id="article_<%= article.id %>" >
-    <%= link_to article_path(article.id) do %>
-      <%= image_tag article.get_image("200x300") %>
-    <% end %>
-  <% if user_signed_in? %>
-    <div class="favorite-btn">
-      <%= render "favorites/favorite_btn", article: article %>
-    </div>
-  <% end %>
-    <p><%= article.status_i18n %></p>
-    <p><%= article.title %></p>
-    <p><%= article.place %></p>
-    <p><%= article.introduction %></p>
-    <p><%= article.created_at.strftime('%Y/%m/%d') %></p>
-    <p>コメント件数：<%= article.post_comments.count %></p>
-  </div>
-<% end %>
+
+<%= paginate @articles %>

@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :ensure_correct_user, only: [:update, :edit, :destroy]
 
   def index
-    @articles = Article.with_attached_image.includes([:image_attachment]).order(created_at: :desc)
+    @articles = Article.all.with_attached_image.includes([:image_attachment]).order(created_at: :desc).page(params[:page]).per(12)
     @search = Article.ransack(params[:q]) #検索機能で使用
     @search_articles = @search.result(distinct: true) #検索結果表示で使用
     @q = Article.ransack(params[:q])
@@ -23,7 +23,8 @@ class ArticlesController < ApplicationController
     article = Article.new(article_params)
     article.user_id = current_user.id
     if article.save
-      redirect_to article_path(article.id)
+      redirect_to article_path(article.id),
+      notice: "投稿に成功しました"
     else
       render :new
     end

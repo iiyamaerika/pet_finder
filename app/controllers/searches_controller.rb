@@ -1,9 +1,10 @@
 class SearchesController < ApplicationController
-  
+
   def search
-    @articles = Article.search(params[:search])
     @q = Article.ransack(params[:q])
+    @search_articles = @q.result(distinct: true).with_attached_image.includes([:image_attachment]).order(created_at: :desc).page(params[:page]).per(3)
+    # 検索結果は最新順
   end
-  
-  
+
+
 end
