@@ -1,2 +1,4 @@
 <h2>トップページ</h2>
-<%= flash[:notice] %>
+<%= image_tag 'dog-top.jpg', size: '800x500' %>
+<h4>新着記事</h4>
+<%= render 'articles/article_outline', articles: @articles %>

@@ -1,13 +1,17 @@
 <h2>保護施設詳細</h2>
-<% @shelter_users.each do |user| %>
-
   <div>
-    <%= image_tag user.get_image("200x300") %>
-    <p>施設名称：<%= user.name %></p>
-    <p>施設名称(カナ)：<%= user.name_kana %></p>
-    <p>施設住所：<%= user.address %></p>
-    <p>電話番号：<%= user.telephone_number %></p>
-    <p>サイト登録日<%= user.created_at.strftime('%Y/%m/%d') %></p>
+    <%= image_tag @user.get_image("200x300") %>
+    <p>施設名称：<%= @user.name %></p>
+    <p>施設名称(カナ)：<%= @user.name_kana %></p>
+    <p>施設住所：<%= @user.address %></p>
+    <p>電話番号：<%= @user.telephone_number %></p>
+    <p>サイト登録日<%= @user.created_at.strftime('%Y/%m/%d') %></p>
   </div>
 
-<% end %>
+
+  <div>
+    <h2>投稿記事一覧</h2>
+    <%= render 'articles/article_outline', articles: @articles %>
+  </div>
+
+<%= paginate @articles %>

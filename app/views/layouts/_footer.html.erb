@@ -7,21 +7,18 @@
       <div class="col-md-8">
         <div class="text-white mt-2 mb-3">
           <button type="button" class="btn btn-dark">
-            <i class="fa-brands fa-instagram"></i>
+            <i class="fab fa-instagram"></i>
           </button>
           <button type="button" class="btn btn-dark">
-            <i class="fa-brands fa-facebook"></i>
+            <i class="fab fa-facebook"></i>
           </button>
           <button type="button" class="btn btn-dark">
-            <i class="fa-brands fa-twitter"></i>
+            <i class="fab fa-twitter"></i>
           </button>
         </div>
         <ul class="p-0 list-unstyled">
           <li>
-              <a href="" title="About" class="text-white-50">会社概要</a>
-          </li>
-          <li>
-            <a href="" title="License informations" class="text-white-50">プライバシーポリシー</a>
+            <%= link_to "About", about_path, class: 'nav-link text-white-50' %>
           </li>
         </ul>
       </div>

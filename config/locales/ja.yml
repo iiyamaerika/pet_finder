@@ -50,3 +50,22 @@ ja:
       over_x_years:
         one:   "1年以上"
         other: "%{count}年以上"
+  activerecord:
+    models:
+      user:
+      article:
+    attributes:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "次回から自動的にログイン"
+      article:
+        status: "状況"
+        title: "タイトル"
+        date: "迷子になった・保護した場所(詳細)"
+        prefecture: "対象の都道府県"
+        place: "迷子になった・保護した場所(詳細)"
+        animal_type: "動物の分類"
+        animal_sex: "対象動物の性別"
+        introduction: "説明"

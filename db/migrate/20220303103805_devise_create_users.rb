@@ -38,7 +38,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :name_kana, null: false
       t.string :image
       t.string :address, null: false
-      t.string :telephone_number
+      t.string :telephone_number, null: false
       t.boolean :is_deleted, null: false, default: false
 
 

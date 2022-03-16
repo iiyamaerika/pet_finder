@@ -1,3 +1,5 @@
+
+
 <%= render 'searches/search_form', q: @q %>
 <h2>投稿詳細</h2>
 <div id="article_<%= @article.id %>" >
@@ -10,15 +12,17 @@
   <p>迷子になった・保護した日：<%= @article.date %></p>
   <p>対象の都道府県：<%= @article.prefecture %></p>
   <p>迷子になった・保護した場所(詳細)：<%= @article.place %></p>
-  
-  <% if !@article.lat.nil? or !@article.lng.nil? %>
-  <div id='map'></div>
-    <p>※地図上の円は半径500mの範囲です</p>
-    <p>【参考】<br>
-    犬の１日の移動距離は約300ｍ～１km程度です。<br>
-    室内飼いの猫の場合は半径50ｍ以内にいることが多いようです。</p>
-  <% end %>
-  
+
+    <!--地図を投稿しなかった場合、lat・lngの両カラムに０が入るのでその場合は地図を表示しない-->
+    <!--緯度・経度０の地点は大西洋(ギニア近く)の上なので投稿される可能性無し-->
+    <% if !@article.lat.to_i.zero? and !@article.lng.to_i.zero? %> 
+    <div id='map'></div>
+      <p>※地図上の円は半径500mの範囲です</p>
+      <p>【参考】<br>
+      犬の１日の移動距離は約300ｍ～１km程度です。<br>
+      室内飼いの猫の場合は半径50ｍ以内にいることが多いようです。</p>
+    <% end %>
+
   <p>動物の分類：<%= @article.animal_type %></p>
   <p>動物の種類：<%= @article.animal_breed %></p>
   <p>対象動物の性別：<%= @article.animal_sex_i18n %></p>

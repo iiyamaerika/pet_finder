@@ -12,6 +12,9 @@
 
   <body>
     <%= render 'layouts/header' %>
+    <% if flash.present? %>
+      <%= render 'layouts/flash_message' %>
+    <% end %>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>

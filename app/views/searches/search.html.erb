@@ -5,3 +5,5 @@
   <h3 class="subtitle"><%= "検索結果" %></h3>
 <% end %>
 <%= render partial: "articles/article_outline", collection: @search_articles, locals: {articles: @search_articles} %>
+
+<%= paginate @search_articles %>

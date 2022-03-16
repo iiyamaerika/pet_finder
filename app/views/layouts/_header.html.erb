@@ -28,6 +28,9 @@
             <%= link_to "迷子・保護・里親募集一覧", articles_path, class: 'nav-link text-dark' %>
           </li>
           <li class="nav-item">
+            <%= link_to "保護施設一覧", users_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
             <%= link_to '新規投稿フォーム', new_article_path, class: 'nav-link text-dark' %>
           </li>
           <li class="nav-item">
@@ -70,6 +73,7 @@
         </ul>
       </div>
 
+  
   <%= search_form_for @q, url: searches_search_path, class: "search-form" do |f| %>
   <%= f.search_field :title_or_introduction_or_animal_breed_or_place_or_animal_type_cont, placeholder: 'キーワードから探す' %>
     <%= f.button type: "submit" do %>

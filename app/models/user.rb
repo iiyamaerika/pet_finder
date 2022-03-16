@@ -28,6 +28,9 @@ class User < ApplicationRecord
   #バリデーション
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :name_kana, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  validates :address, presence: true
+  validates :category, presence: true
+  validates :telephone_number, length: {in: 6..11}
 
   enum category: { private_user: 0, shelter: 1 }
 
