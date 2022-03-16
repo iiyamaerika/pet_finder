@@ -9,7 +9,7 @@ class FavoritesController < ApplicationController
   def create
     @article = Article.find(params[:article_id])
     favorite = @article.favorites.new(user_id: current_user.id)
-    favorite.save!
+    favorite.save
 
     @article.create_notification_favorite!(current_user)
     respond_to do |format|
