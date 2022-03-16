@@ -18,7 +18,7 @@ class ContactsController < ApplicationController
     render :new
   end
 
-  # 実際に送信、ここで入力内容を保存します。
+  # 実際に送信、ここで入力内容を保存
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
