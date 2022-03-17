@@ -1,2 +1,25 @@
-<h1>Chats#show</h1>
-<p>Find me in app/views/chats/show.html.erb</p>
+<h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">
+  <%= @user.name %>さんとのメッセージ
+</h2>
+
+<div class="message" style="width: 400px;">
+  <% @chats.each do |chat| %>
+    <% if chat.user_id == current_user.id %>
+      <p style="text-align: right;">
+        <%= chat.message %>
+      </p>
+    <% else %>
+      <p style="text-align: left;"><%= chat.message %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="errors">
+  <%= render "layouts/error_messages", model: @chat %>
+</div>
+
+<%= form_with model: @chat, data:{remote: true} do |f| %>
+  <%= f.text_field :message %>
+  <%= f.hidden_field :room_id %>
+  <%= f.submit '送信' %>
+<% end %>

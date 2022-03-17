@@ -1,2 +1,13 @@
-<h1>Chats#index</h1>
-<p>Find me in app/views/chats/index.html.erb</p>
+<h2>DM一覧</h2>
+
+<% @users.each do |user| %>
+<div class="text-black-50">
+  <%= link_to chat_path(user) do %>
+    <%= image_tag user.get_image("200x300") %>
+    <%= user.name %>
+  <% end %>
+  <!--相手とのチャットルームの中で最新の会話を表示-->
+  <%= Chat.where(room_id: user.user_rooms.pluck(:room_id)).last.message %>
+</div>
+
+<% end %>
