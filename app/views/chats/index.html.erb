@@ -6,7 +6,7 @@
     <%= image_tag user.get_image("200x300") %>
     <%= user.name %>
   <% end %>
-  <!--相手との最新の会話を表示-->
+  <!--相手とのチャットルームの中で最新の会話を表示-->
   <%= Chat.where(room_id: user.user_rooms.pluck(:room_id)).last.message %>
 </div>
 
