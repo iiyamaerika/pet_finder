@@ -52,10 +52,15 @@ ja:
         other: "%{count}年以上"
   activerecord:
     models:
-      user:
-      article:
+      user: "会員情報"
+      article: "投稿記事"
     attributes:
       user:
+        category: "カテゴリー"
+        name: "お名前or施設名称"
+        name_kana: "お名前or施設名称（カナ）"
+        address: "住所"
+        telephone_number: "電話番号"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
@@ -68,4 +73,5 @@ ja:
         place: "迷子になった・保護した場所(詳細)"
         animal_type: "動物の分類"
         animal_sex: "対象動物の性別"
+        animal_age: "動物の年齢(およそ)"
         introduction: "説明"

@@ -32,7 +32,7 @@
 
   <% if @article.user == current_user %>
     <%= link_to "編集", edit_article_path(@article)%>
-    <%= link_to "削除", article_path(@article), method: :delete %>
+    <%= link_to "削除", article_path(@article), method: :delete, data: { confirm: '投稿記事を削除します。よろしいですか？' } %>
   <% end %>
 
 

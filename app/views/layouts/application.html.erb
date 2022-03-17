@@ -12,8 +12,10 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <% if flash.present? %>
-      <%= render 'layouts/flash_message' %>
+    <% if user_signed_in? %>
+      <% if flash.present? %>
+        <%= render 'layouts/flash_message' %>
+      <% end %>
     <% end %>
     <%= yield %>
     <%= render 'layouts/footer' %>
