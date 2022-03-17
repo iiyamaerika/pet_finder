@@ -1,2 +1,11 @@
-<h1>Chats#index</h1>
-<p>Find me in app/views/chats/index.html.erb</p>
+<h2>DM一覧</h2>
+
+<% @rooms.each do |room| %>
+
+  <%= link_to chat_path(room) do %>
+    <%= image_tag room.user.get_image("200x300") %>
+    <%= room.user.name %>
+  <% end %>
+  <%= Chat.find_by(id: room.id).message %>
+
+<% end %>
