@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :ensure_correct_user, only: [:update]
 
   def index
     @shelter_users = User.shelter.with_attached_image.includes([:image_attachment]).page(params[:page]).per(6)
@@ -24,6 +25,15 @@ class UsersController < ApplicationController
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
+  end
+
+  private
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user)
+    end
   end
 
 
