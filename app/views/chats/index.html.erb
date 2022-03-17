@@ -1,11 +1,13 @@
 <h2>DM一覧</h2>
 
-<% @rooms.each do |room| %>
-
-  <%= link_to chat_path(room) do %>
-    <%= image_tag room.user.get_image("200x300") %>
-    <%= room.user.name %>
+<% @users.each do |user| %>
+<div class="text-black-50">
+  <%= link_to chat_path(user) do %>
+    <%= image_tag user.get_image("200x300") %>
+    <%= user.name %>
   <% end %>
-  <%= Chat.find_by(id: room.id).message %>
+  <!--相手との最新の会話を表示-->
+  <%= Chat.where(room_id: user.user_rooms.pluck(:room_id)).last.message %>
+</div>
 
 <% end %>

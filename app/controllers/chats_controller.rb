@@ -1,10 +1,8 @@
 class ChatsController < ApplicationController
   
   def index
-    rooms = current_user.user_rooms
-    user_rooms = UserRoom.find_by(user_id: current_user.id, room_id: rooms)
-    @rooms = current_user.user_rooms
-    
+    # 相互フォローのみDM可能
+    @users = current_user.followings.with_attached_image.includes([:image_attachment]) & current_user.followers.with_attached_image.includes([:image_attachment])
   end
 
   def show
