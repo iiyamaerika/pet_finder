@@ -3,7 +3,14 @@ class RelationshipsController < ApplicationController
   # フォローする時
   def create
     current_user.follow(params[:user_id])
-    redirect_to request.referer
+    
+    #通知機能
+    @user =User.find(params[:user_id])
+    @user.create_notification_follow!(current_user)
+    respond_to do |format|
+      format.html {redirect_to request.referer}
+      format.js 
+    end
   end
 
   # フォロー外す時

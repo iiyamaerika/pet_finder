@@ -8,6 +8,7 @@ module NotificationsHelper
     # notification.actionがfavoriteかcommentかで処理を変える
     case notification.action
     when 'favorite'
+      #aタグで通知を作成したユーザーshowのリンクを作成
       tag.a(notification.visitor.name, href: user_path(@visitor)) + 'が' + tag.a('あなたの投稿', href: article_path(notification.article_id)) + 'にいいねしました'
     when 'comment' then
       #コメントの内容と投稿のタイトルを取得
@@ -15,6 +16,8 @@ module NotificationsHelper
       @comment_content =@comment.comment
       @article_title =@comment.article.title
       tag.a(@visitor.name, href: user_path(@visitor)) + 'が' + tag.a("#{@article_title}", href: article_path(notification.article_id)) + 'にコメントしました'
+    when 'follow'
+      tag.a(notification.visitor.name, href: user_path(@visitor)) + 'があなたをフォローしました'
     end
   end
   
