@@ -1,89 +1,81 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-white">
+  <div class="navigation">
+    <ul>
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.png', size: '300x100' %>
+      <% end %>
 
-
-    <div class="container">
-      <a class="navbar-brand p-3" href="/"><%= image_tag 'logo.png', size: '300x100' %></a>
-
-
-    <div class="header-name text-dark">
       <% if user_signed_in? %>
         ようこそ、<%= current_user.name %>さん！
       <% end %>
-    </div>
+    </ul>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-
-          <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "掲示板", articles_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "保護施設", users_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to '新規投稿', new_article_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "会員情報編集", edit_user_registration_path(current_user.id), class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "いいね", article_favorites_path(current_user.id), class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "フォロー", user_followings_path(current_user.id), class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "DM", chats_path, class: 'nav-link text-dark' %>
-          </li>
-          <% if unchecked_notifications.any? %>
-          <i class="fas fa-bell" style="color: gold;"></i>
-          <% end %>
-          <li class="nav-item">
-            <%= link_to "通知", notifications_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' }, class: 'nav-link text-dark' %>
-          </li>
+    <ul>
+      <% if user_signed_in? %>
+      <li class="button">
+        <p><a href="#"><%= link_to "マイページ", user_path(current_user.id) %></a></p>
+      </li>
+      <li class="button">
+        <p><a href="#"><%= link_to "掲示板", articles_path %></a></p>
+      </li>
+      <li class="button">
+        <p><a href="#"><%= link_to "保護施設", users_path %></a></p>
+      </li>
+      <li class="button">
+        <p><a href="#"><%= link_to '新規投稿', new_article_path %></a></p>
+      </li>
+      <li class="button">
+        <p><a href="#"><%= link_to "会員情報編集", edit_user_registration_path(current_user.id) %></a></p>
+      </li>
+      <li class="button">
+        <p><a href="#"><%= link_to "いいね", article_favorites_path(current_user.id) %></a></p>
+      </li>
+      <li class="button">
+        <%= link_to "フォロー", user_followings_path(current_user.id) %></a></p>
+      </li>
+      <li class="button">
+        <p><a href="#"><%= link_to "DM", chats_path %></a></p>
+      </li>
+      <% if unchecked_notifications.any? %>
+        <i class="fas fa-bell" style="color: gold;"></i>
+      <% end %>
+      <li class="button">
+        <p><a href="#"><%= link_to "通知", notifications_path %></a></p>
+      </li>
+      <li class="button">
+        <p><a href="#"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' } %></a></p>
+      </li>
 
           <% else %>
 
-          <li class="nav-item">
-            <%= link_to "掲示板", articles_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "保護施設", users_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "About", about_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
-          </li>
-          <% end %>
-        </ul>
-      </div>
+      <li class="button">
+        <p><a href="#"><%= link_to "掲示板", articles_path %></a></p>
+      </li>
+      <li class="button">
+        <p><a href="#"><%= link_to "保護施設", users_path %></a></p>
+      </li>
+      <li class="button">
+        <p><a href="#"><%= link_to "About", about_path %></a></p>
+      </li>
+      <li class="button">
+        <p><a href="#"><%= link_to "新規登録", new_user_registration_path %></a></p>
+      </li>
+      <li class="button">
+        <p><a href="#"><%= link_to "ログイン", new_user_session_path %></a></p>
+      </li>
+      <% end %>
+    </ul>
 
-  
-  <%= search_form_for @q, url: searches_search_path, class: "search-form" do |f| %>
-  <%= f.search_field :title_or_introduction_or_animal_breed_or_place_or_animal_type_cont, placeholder: 'キーワードから探す' %>
-    <%= f.button type: "submit" do %>
-      <i class="fas fa-search"></i>
+  </div>
+  <div class="right">
+    <%= search_form_for @q, url: searches_search_path, class: "search-form" do |f| %>
+    <%= f.search_field :title_or_introduction_or_animal_breed_or_place_or_animal_type_cont, placeholder: 'キーワードから探す' %>
+      <%= f.button type: "submit" do %>
+        <i class="fas fa-search"></i>
+      <% end %>
     <% end %>
-  <% end %>
-
-    </div>
-  </nav>
+  </div>
+  
+  
+  
 </header>
