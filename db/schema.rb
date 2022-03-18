@@ -90,14 +90,10 @@ ActiveRecord::Schema.define(version: 2022_03_16_123009) do
     t.integer "post_comment_id"
     t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
-    t.integer "room_id"
-    t.integer "chat_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["article_id"], name: "index_notifications_on_article_id"
-    t.index ["chat_id"], name: "index_notifications_on_chat_id"
     t.index ["post_comment_id"], name: "index_notifications_on_post_comment_id"
-    t.index ["room_id"], name: "index_notifications_on_room_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
