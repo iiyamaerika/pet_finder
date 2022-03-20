@@ -1,9 +1,11 @@
 <header>
+
   <div class="navigation">
     <ul>
       <%= link_to root_path do %>
         <%= image_tag 'logo.png', size: '300x100' %>
       <% end %>
+
 
       <% if user_signed_in? %>
         ようこそ、<%= current_user.name %>さん！

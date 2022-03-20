@@ -18,6 +18,8 @@ module NotificationsHelper
       tag.a(@visitor.name, href: user_path(@visitor)) + 'が' + tag.a("#{@article_title}", href: article_path(notification.article_id)) + 'にコメントしました'
     when 'follow'
       tag.a(notification.visitor.name, href: user_path(@visitor)) + 'があなたをフォローしました'
+    when 'dm'
+      tag.a(notification.visitor.name, href: user_path(@visitor)) + 'からDMがきました'
     end
   end
   
