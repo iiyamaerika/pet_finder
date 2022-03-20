@@ -1,15 +1,20 @@
-<h2>トップページ</h2>
-<%= image_tag 'dog-top.jpg', size: '800x500' %>
-<h4>新着記事</h4>
-<%= render 'articles/article_outline', articles: @articles %>
+<%= render 'homes/carousel' %>
 
-<h4>迷子・保護　投稿された地図一覧</h4>
-<div id='map'></div>
+<div class="row">
+  <div class="col-md-9 mt-5">
+    <h4>迷子・保護　発生マップ</h4>
+    <div id='map'></div>
+  </div>
+  <div class="col-md-3 mt-5">
+    <h4>新着記事</h4>
+    <%= render 'articles/article_outline', articles: @articles %>
+  </div>
+</div>
 
 <style>
 #map {
   height: 600px;
-  width: 60%;
+  width: 90%;
 }
 </style>
 
@@ -38,17 +43,17 @@
       transitLayer.setMap(map);
 
       //複数マーカー ここから
-      <% @articles.each do |article|%>
-        ( function() { 
+      <% @map_articles.each do |article|%>
+        ( function() {
           let markerLatLng = new google.maps.LatLng({lat: <%= article.lat %>, lng: <%= article.lng %>}); // 緯度経度のデータ作成
-          let marker = new google.maps.Marker({ 
-            position: markerLatLng, 
-            map: map 
+          let marker = new google.maps.Marker({
+            position: markerLatLng,
+            map: map
           });
     　　　//マーカーをクリックしたとき、詳細情報を表示
           let infowindow = new google.maps.InfoWindow({
             position: markerLatLng,
-            content: "<a href='<%= article_url(article.id) %>' target='_blank'><%= article.title %></a>"
+            content: "<a href='<%= article_url(article.id) %>' target='_blank'><%= article.status_i18n %><br><%= article.title %><br><%= article.introduction %></a>"
           }); //ここで詳細ページへのリンクを表示させる
           marker.addListener('click', function() {
             infowindow.open(map, marker);
@@ -56,7 +61,7 @@
 
        })();
       <% end %>
-      //複数マーカー ここまで  
+      //複数マーカー ここまで
   }
 </script>
 

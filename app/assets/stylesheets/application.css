@@ -34,7 +34,7 @@
 .button{
   display: block;
   padding:10px 5px;
-  background:white;
+  background:dark;
   width:20%;
   float:left;
   /* カーソルを離した際のアニメーションの速度調整 */
@@ -44,8 +44,8 @@
   height: 10px;
   font-weight: 300;
 }
-.button a {
-  color:#333333;
+.button .header-text {
+  color: white;
   /* リンク指定した要素のスタイルを削除 */
   text-decoration:none;
 }

@@ -1,5 +1,6 @@
 <%= render 'searches/search_form', q: @q %>
 <h1>投稿一覧</h1>
-<%= render 'article_outline', articles: @articles %>
-
+<div class="card-deck">
+  <%= render 'article_outline', articles: @articles %>
+</div>
 <%= paginate @articles %>

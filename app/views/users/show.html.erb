@@ -1,5 +1,12 @@
-<h2>ユーザー情報</h2>
-  <%= render 'user_info', user: @user %>
-
-<h2>ユーザーの投稿</h2>
-  <%= render 'articles/article_outline', articles: @articles %>
+<div class="row">
+  <div class="col-md-2 m-5">
+    <h2>ユーザー情報</h2>
+    <%= render 'user_info', user: @user %>
+  </div>
+  <div class="col-md-9 mt-5">
+    <h2>ユーザーの投稿</h2>
+      <div class="card-deck">
+        <%= render 'articles/article_outline', articles: @articles %>
+     </div>
+  </div>
+</div>

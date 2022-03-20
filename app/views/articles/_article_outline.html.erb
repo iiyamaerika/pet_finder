@@ -1,18 +1,25 @@
-<% articles.each do |article| %>
-  <div id="article_<%= article.id %>" >
-    <%= link_to article_path(article.id) do %>
-      <%= image_tag article.get_image("200x300") %>
-    <% end %>
-  <% if user_signed_in? %>
-    <div class="favorite-btn">
-      <%= render "favorites/favorite_btn", article: article %>
+    <% articles.each do |article| %>
+    <div class="card">
+      <div class="card-body">
+      <div id="article_<%= article.id %>" >
+        <div class="card-img-to">
+        <%= link_to article_path(article.id) do %>
+          <%= image_tag article.get_image("200x300") %>
+        <% end %>
+        </div>
+        <% if user_signed_in? %>
+        <div class="favorite-btn">
+          <%= render "favorites/favorite_btn", article: article %>
+        </div>
+        <% end %>
+        <p class="card-text"><%= article.status_i18n %></p>
+        <h5 class="card-title"><%= article.title %></h5>
+        <p class="card-text"><%= article.place %></p>
+        <p class="card-text"><%= article.introduction %></p>
+        <p class="card-text"><%= article.created_at.strftime('%Y/%m/%d') %></p>
+        <p class="card-text">コメント件数：<%= article.post_comments.count %></p>
+        <%= link_to "詳細へ", article_path(article.id), class: "btn btn-sm btn-success" %>
+      </div>
     </div>
-  <% end %>
-    <p><%= article.status_i18n %></p>
-    <p><%= article.title %></p>
-    <p><%= article.place %></p>
-    <p><%= article.introduction %></p>
-    <p><%= article.created_at.strftime('%Y/%m/%d') %></p>
-    <p>コメント件数：<%= article.post_comments.count %></p>
   </div>
-<% end %>
+    <% end %>
