@@ -15,55 +15,115 @@
     <ul>
       <% if user_signed_in? %>
       <li class="button">
-        <p><a href="#"><%= link_to "マイページ", user_path(current_user.id) %></a></p>
+        <p>
+          <%= link_to user_path(current_user.id), method: :get do %>
+            マイページ<i class="fas fa-user"></i>
+          <% end %>
+        </p>
       </li>
       <li class="button">
-        <p><a href="#"><%= link_to "掲示板", articles_path %></a></p>
+        <p>
+          <%= link_to articles_path, method: :get do %>
+            掲示板<i class="fas fa-paper-plane"></i>
+          <% end %>
+        </p>
       </li>
       <li class="button">
-        <p><a href="#"><%= link_to "保護施設", users_path %></a></p>
+        <p>
+          <%= link_to users_path, method: :get do %>
+            保護施設<i class="fas fa-home"></i>
+          <% end %>
+        </p>
       </li>
       <li class="button">
-        <p><a href="#"><%= link_to '新規投稿', new_article_path %></a></p>
+        <p>
+          <%= link_to new_article_path, method: :get do %>
+            新規投稿<i class="far fa-plus-square"></i>
+          <% end %>
+        </p>
       </li>
       <li class="button">
-        <p><a href="#"><%= link_to "会員情報編集", edit_user_registration_path(current_user.id) %></a></p>
+        <p>
+          <%= link_to edit_user_registration_path(current_user.id), method: :get do %>
+            会員情報編集<i class="fas fa-edit"></i>
+          <% end %>
+        </p>
       </li>
       <li class="button">
-        <p><a href="#"><%= link_to "いいね", article_favorites_path(current_user.id) %></a></p>
+        <p>
+          <%= link_to article_favorites_path(current_user.id), method: :get do %>
+            いいね<i class="fas fa-thumbs-up"></i>
+          <% end %>
+        </p>
       </li>
       <li class="button">
-        <%= link_to "フォロー", user_followings_path(current_user.id) %></a></p>
+        <p>
+          <%= link_to user_followings_path(current_user.id), method: :get do %>
+            フォロー<i class="fas fa-user-friends"></i>
+          <% end %>
+        </p>
       </li>
       <li class="button">
-        <p><a href="#"><%= link_to "DM", chats_path %></a></p>
-      </li>
-      <% if unchecked_notifications.any? %>
-        <i class="fas fa-bell" style="color: gold;"></i>
-      <% end %>
-      <li class="button">
-        <p><a href="#"><%= link_to "通知", notifications_path %></a></p>
+        <p>
+          <%= link_to chats_path, method: :get do %>
+            DM<i class="fas fa-comments"></i>
+          <% end %>
+        </p>
       </li>
       <li class="button">
-        <p><a href="#"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' } %></a></p>
+        <% if unchecked_notifications.any? %>
+          <i class="fas fa-circle" style="color: gold;"></i>
+        <% end %>
+        <p>
+          <%= link_to notifications_path, method: :get do %>
+            通知<i class="fas fa-bell"></i>
+          <% end %>
+        </p>
+      </li>
+      <li class="button">
+        <p>
+          <%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' } do %>
+            ログアウト<i class="fas fa-sign-out-alt"></i>
+          <% end %>
+        </p>
       </li>
 
           <% else %>
 
       <li class="button">
-        <p><a href="#"><%= link_to "掲示板", articles_path %></a></p>
+        <p>
+          <%= link_to articles_path, method: :get do %>
+            掲示板<i class="fas fa-paper-plane"></i>
+          <% end %>
+        </p>
       </li>
       <li class="button">
-        <p><a href="#"><%= link_to "保護施設", users_path %></a></p>
+        <p>
+          <%= link_to users_path, method: :get do %>
+            保護施設<i class="fas fa-home"></i>
+          <% end %>
+        </p>
       </li>
       <li class="button">
-        <p><a href="#"><%= link_to "About", about_path %></a></p>
+        <p>
+          <%= link_to about_path, method: :get do %>
+            About<i class="fas fa-smile"></i>
+          <% end %>
+        </p>
       </li>
       <li class="button">
-        <p><a href="#"><%= link_to "新規登録", new_user_registration_path %></a></p>
+        <p>
+          <%= link_to new_user_registration_path, method: :get do %>
+            新規登録<i class="fas fa-user-plus"></i>
+          <% end %>
+        </p>
       </li>
       <li class="button">
-        <p><a href="#"><%= link_to "ログイン", new_user_session_path %></a></p>
+        <p>
+          <%= link_to new_user_session_path, method: :get do %>
+            ログイン<i class="fas fa-sign-in-alt"></i>
+          <% end %>
+        </p>
       </li>
       <% end %>
     </ul>
