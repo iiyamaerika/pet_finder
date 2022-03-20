@@ -41,6 +41,8 @@
   <%= render 'post_comments/index' , article: @article %>
   <%= render 'post_comments/form' , article: @article, post_comment: @post_comment %>
 
+  <%= link_to "記事一覧へ", articles_path %>
+
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
