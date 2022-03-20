@@ -1,8 +1,8 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-white">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
 
 
-    <div class="container">
+    <div class="container-fluid">
       <a class="navbar-brand p-3" href="/"><%= image_tag 'logo.png', size: '300x100' %></a>
 
 
@@ -21,57 +21,89 @@
         <ul class="navbar-nav ml-auto">
 
           <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "掲示板", articles_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "保護施設", users_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to '新規投稿', new_article_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "会員情報編集", edit_user_registration_path(current_user.id), class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "いいね", article_favorites_path(current_user.id), class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "フォロー", user_followings_path(current_user.id), class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "DM", chats_path, class: 'nav-link text-dark' %>
-          </li>
-          <% if unchecked_notifications.any? %>
-          <i class="fas fa-bell" style="color: gold;"></i>
-          <% end %>
-          <li class="nav-item">
-            <%= link_to "通知", notifications_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' }, class: 'nav-link text-dark' %>
-          </li>
-
+          <button class="btn btn-link" type="button">
+            <%= link_to user_path(current_user.id), class: "nav-link", method: :get do %>
+              マイページ<i class="fas fa-user"></i>
+            <% end %>
+          </button>
+          <button class="btn btn-link" type="button">
+            <%= link_to articles_path, class: "nav-link", method: :get do %>
+              掲示板<i class="fas fa-paper-plane"></i>
+            <% end %>
+          </button>
+          <button class="btn btn-link" type="button">
+            <%= link_to users_path, class: "nav-link", method: :get do %>
+              保護施設<i class="fas fa-home"></i>
+            <% end %>
+          </button>
+          <button class="btn btn-link" type="button">
+            <%= link_to new_article_path, class: "nav-link", method: :get do %>
+              新規投稿<i class="far fa-plus-square"></i>
+            <% end %>
+          </button>
+          <button class="btn btn-link" type="button">
+            <%= link_to edit_user_registration_path(current_user.id), class: "nav-link", method: :get do %>
+              会員情報編集<i class="fas fa-edit"></i>
+            <% end %>
+          </button>
+          <button class="btn btn-link" type="button">
+            <%= link_to article_favorites_path(current_user.id), class: "nav-link", method: :get do %>
+              いいね<i class="fas fa-thumbs-up"></i>
+            <% end %>
+          </button>
+          <button class="btn btn-link" type="button">
+            <%= link_to user_followings_path(current_user.id), class: "nav-link", method: :get do %>
+              フォロー<i class="fas fa-user-friends"></i>
+            <% end %>
+          </button>
+          <button class="btn btn-link" type="button">
+            <%= link_to chats_path, class: "nav-link", method: :get do %>
+              DM<i class="fas fa-comments"></i>
+            <% end %>
+          </button>
+          <button class="btn btn-link" type="button">
+            <% if unchecked_notifications.any? %>
+              <i class="fas fa-circle" style="color: gold;"></i>
+            <% end %>
+          
+            <%= link_to notifications_path, class: "nav-link", method: :get do %>
+              通知<i class="fas fa-bell"></i>
+            <% end %>
+          </button>
+          <button class="btn btn-link" type="button">
+            <%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' }, class: "nav-link" do %>
+              ログアウト<i class="fas fa-sign-out-alt"></i>
+            <% end %>
+          </button>
+          
           <% else %>
 
-          <li class="nav-item">
-            <%= link_to "掲示板", articles_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "保護施設", users_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "About", about_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
-          </li>
+          <button class="btn btn-link" type="button">
+            <%= link_to articles_path, class: "nav-link", method: :get do %>
+              掲示板<i class="fas fa-paper-plane"></i>
+            <% end %>
+          </button>
+          <button class="btn btn-link" type="button">
+            <%= link_to users_path, class: "nav-link", method: :get do %>
+              保護施設<i class="fas fa-home"></i>
+            <% end %>
+          </button>
+          <button class="btn btn-link" type="button">
+            <%= link_to about_path, class: "nav-link", method: :get do %>
+              About<i class="fas fa-smile"></i>
+            <% end %>
+          </button>
+          <button class="btn btn-link" type="button">
+            <%= link_to new_user_registration_path, class: "nav-link", method: :get do %>
+              新規登録<i class="fas fa-user-plus"></i>
+            <% end %>
+          </button>
+          <button class="btn btn-link" type="button">
+            <%= link_to new_user_session_path, class: "nav-link", method: :get do %>
+              ログイン<i class="fas fa-sign-in-alt"></i>
+            <% end %>
+          </button>
+          
           <% end %>
         </ul>
       </div>
