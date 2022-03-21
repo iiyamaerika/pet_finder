@@ -1,15 +1,24 @@
 <%= render 'homes/carousel' %>
 
-<div class="row">
-  <div class="col-md-9 mt-5">
-    <h4>迷子・保護　発生マップ</h4>
-    <div id='map'></div>
-  </div>
-  <div class="col-md-3 mt-5">
-    <h4>新着記事</h4>
-    <%= render 'articles/article_outline', articles: @articles %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 mt-5 mb-5">
+      <h4>迷子・保護　発生マップ</h4>
+      <div id='map'></div>
+    </div>
+    <div class="col-md-3 mt-5 d-flex align-items-center">
+      <p>こちらのページの地図は、現在までに投稿された迷子や保護されたペットの分布図です。<br>
+      地図上のピンをクリックしていただくと、詳細ページへ移動します。<br>
+      お近くに住まわれている方でお心当たりのある方は<br>
+      ぜひこちらのサイトに情報をお寄せください。</p>
+    </div>
+    <div class="col-md-12">
+      <h4>新着記事（3件）</h4>
+      <%= render 'articles/article_outline', articles: @articles %>
+    </div>
   </div>
 </div>
+
 
 <style>
 #map {

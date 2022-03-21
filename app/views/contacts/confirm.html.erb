@@ -1,20 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-2">
 <table>
   <tbody>
     <tr>
-      <td class="text-center" style="width: 30%;">お名前</td>
-      <td><%= @contact.name %></td>
+      <td class="pt-5 pb-2" style="width: 30%;">お名前</td>
+      <td class="pt-5 pb-2 pl-3"><%= @contact.name %></td>
     </tr>
     <tr>
-      <td class="text-center" style="width: 30%;">メールアドレス</td>
-      <td><%= @contact.email %></td>
+      <td class="pb-2" style="width: 30%;">メールアドレス</td>
+      <td class="pb-2 pl-3"><%= @contact.email %></td>
     </tr>
     <tr>
-      <td class="text-center" style="width: 30%;">件名</td>
-      <td><%= @contact.subject %></td>
+      <td class="pb-2" style="width: 30%;">件名</td>
+      <td class="pb-2 pl-3"><%= @contact.subject %></td>
     </tr>
     <tr>
-      <td class="text-center">メッセージ</td>
-      <td style="white-space: pre-wrap;"><%= @contact.message %></td>
+      <td class="pb-2">メッセージ</td>
+      <td class="pb-2 pl-3" style="white-space: pre-wrap;"><%= @contact.message %></td>
     </tr>
   </tbody>
 </table>
@@ -24,7 +27,7 @@
   <%= f.hidden_field :email %>
   <%= f.hidden_field :subject %>
   <%= f.hidden_field :message %>
-  <div><%= f.submit '送信' %></div>
+  <div><%= f.submit '送信', class: "btn btn-success mt-3 mb-3" %></div>
 <% end %>
 
 <%= form_with model: @contact, url: back_path, local: true do |f| %>
@@ -32,5 +35,8 @@
   <%= f.hidden_field :email %>
   <%= f.hidden_field :subject %>
   <%= f.hidden_field :message %>
-  <div><%= f.submit '入力画面に戻る' %></div>
+  <div><%= f.submit '入力画面に戻る', class: "btn btn-warning mb-3" %></div>
 <% end %>
+    </div>
+  </div>
+</div>

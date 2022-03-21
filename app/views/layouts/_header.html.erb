@@ -140,7 +140,16 @@
           <% end %>
         </span>
         
-        
+        <div class="right">
+        <%= search_form_for @q, url: searches_search_path, class: "search-form" do |f| %>
+        <div class="input-group">
+          <%= f.search_field :title_or_introduction_or_animal_breed_or_place_or_animal_type_cont, placeholder: 'キーワードから探す' %>
+          <span class="input-group-btn">
+          <%= f.submit "検索", class: "btn btn-success" %>
+          </span>
+          </div>
+        <% end %>
+      </div>
         
         
       </div>
@@ -156,18 +165,13 @@
         <% end %>
       </span>
 
-      <div class="right">
-        <%= search_form_for @q, url: searches_search_path, class: "search-form" do |f| %>
-          <%= f.search_field :title_or_introduction_or_animal_breed_or_place_or_animal_type_cont, placeholder: 'キーワードから探す' %>
-          <%= f.button type: "submit" do %>
-          <i class="fas fa-search"></i>
-          <% end %>
-        <% end %>
-      </div>
+      
       <span>
+        <% if user_signed_in? %>
           <%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' }, class: "text-white" do %>
             ログアウト<i class="fas fa-sign-out-alt"></i>
           <% end %>
+        <% end %>
       </span>
     </nav>
   </div>
