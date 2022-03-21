@@ -1,7 +1,13 @@
-<h1>会員情報変更</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 mt-5 offset-md-3">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+
+      <h1 class="mb-4">会員情報変更</h1>
+
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="form-group">
     <%= f.radio_button :category, "private_user", checked: "checked" %>
@@ -55,11 +61,20 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "更新" %>
+  <div class="actions mt-3">
+    <%= f.submit "更新",class: "btn btn-success" %>
   </div>
 <% end %>
 
-<%= link_to '退会する', user_unsubscribe_path(current_user) %>
+  <div class="right">
+    <div>
+      <p><%= link_to '退会する', user_unsubscribe_path(current_user),class: "btn btn-danger" %></p>
+      <p><%= link_to "Back", :back, class: "btn btn-secondary" %></p>
+    </div>
+  </div>
 
-<%= link_to "Back", :back %>
+
+
+    </div>
+  </div>
+</div>

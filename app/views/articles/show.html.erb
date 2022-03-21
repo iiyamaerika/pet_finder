@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3 mt-5 ml-5">
+      <h5 class="ml-4">絞り込み検索</h5>
       <%= render 'searches/search_form', q: @q %>
     </div>
 
@@ -44,7 +45,7 @@
 
 
       <h2 class="mt-5">コメント</h2>
-      <div class="m">
+      <div class="mt-2 mb-5">
       <%= render 'post_comments/index' , article: @article %>
       <%= render 'post_comments/form' , article: @article, post_comment: @post_comment %>
       </div>

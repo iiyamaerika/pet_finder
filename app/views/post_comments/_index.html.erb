@@ -1,17 +1,17 @@
-<table>
+<table class="table table-borderless">
   <tbody>
-    <% article.post_comments.each do |post_comment| %>
+    <% article.post_comments.includes([:user]).each do |post_comment| %>
     <tr>
       <td>
-        <%= link_to(post_comment.user) do%>
+        <%= link_to user_path(post_comment.user) do%>
           <%= image_tag post_comment.user.get_image("100x100") %>
-          <p class="text-center"><%= post_comment.user.name %></p>
+          <p><%= post_comment.user.name %></p>
        <% end %>
       </td>
-      <td>
+      <td  class="align-middle">
         <%= post_comment.comment %>
       </td>
-      <td>
+      <td  class="align-middle">
         <!--ログインユーザーが投稿したコメントであれば削除ボタンを表示-->
         <% if post_comment.user == current_user %>
           <%= link_to "削除", article_post_comment_path(post_comment.article, post_comment), method: :delete, class: "btn btn-outline-danger" %>

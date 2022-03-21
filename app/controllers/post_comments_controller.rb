@@ -17,7 +17,7 @@ class PostCommentsController < ApplicationController
   end
 
   def destroy
-    PostComment.find(params[:id]).destroy
+    PostComment.includes([:user]).find(params[:id]).destroy
     flash[:notice] = 'コメントを削除しました'
     redirect_to article_path(params[:article_id])
   end

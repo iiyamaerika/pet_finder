@@ -1,13 +1,11 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12 mt-2 mb-5 d-flex justify-content-center">
-      
-      
-      
+
       <%= form_with model: article, local: true do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
-      <p>※は必須項目です。</p>
-      <h4>状況※</h4>
+      <u class="font-weight-bold">※は必須項目です。</u>
+      <h5 class="mt-3"> <span class="mark">状況※</span></h5>
       <div>
         <%= f.radio_button :status, "lost", checked: "checked" %>
         <%= f.label :status, "迷子" %>
@@ -23,22 +21,35 @@
       </div>
 
 
-      <h4>対象動物の画像</h4>
+
+      <h5 class="mt-3"> <span class="mark">対象動物の画像</span></h5>
+      <div class="mt-3">
         <%= f.file_field :image, accept: "image/*" %>
+      </div>
 
-      <h4>タイトル※</h4>
+      <h5 class="mt-3"> <span class="mark">タイトル※</span></h5>
+      <div class="mt-3">
         <%= f.text_field :title %>
+      </div>
 
-      <h4>迷子になった・保護した日※</h4>
+      <h5 class="mt-3"> <span class="mark">迷子になった・保護した日※</span></h5>
+      <div class="mt-3">
         <%= f.date_field :date %>
       <p>（不明の場合は大体の日付記入してください）</p>
+      </div>
 
-      <h4>対象の都道府県※</h4>
+      <h5 class="mt-3"> <span class="mark">対象の都道府県※</span></h5>
+      <div class="mt-3">
         <%= f.collection_select :prefecture, JpPrefecture::Prefecture.all,:name, :name, {:prompt => "選択してください"} %>
+      </div>
 
-      <h4>迷子になった・保護した場所(詳細)※</h4>
+      <h5 class="mt-3"> <span class="mark">迷子になった・保護した場所(詳細)※</span></h5>
+      <div class="mt-3">
         <%= f.text_field :place %>
-      <h4>地図追加(迷子・保護の場合のみ)</h4>
+      </div>
+      
+       <h5 class="mt-3"> <span class="mark">地図追加(迷子・保護の場合のみ)</span></h5>
+
 
       <p>地名を検索してください</p>
       <input id="address" type="textbox" value="地名">
@@ -49,8 +60,9 @@
       <%= f.text_field :lng,:value =>"経度が表示されます", id: :lng %>
 
 
-      <h4>動物の分類※</h4>
-      <div>
+
+      <h5 class="mt-3"> <span class="mark">動物の分類※</span></h5>
+      <div class="mt-3">
         <%= f.radio_button :animal_type, "犬", checked: "checked" %>
         <%= f.label :animal_type, "犬" %>
         <br>
@@ -64,12 +76,12 @@
         <%= f.label :animal_type, "その他" %>
       </div>
 
-      <h4>動物の種類</h4>
+      <h5 class="mt-3"> <span class="mark">動物の種類</span></h5>
       <p>柴犬、マンチカン、インコ・・・etc</p>
       <%= f.text_field :animal_breed %>
 
-      <h4>対象動物の性別※</h4>
-        <div>
+      <h5 class="mt-3"> <span class="mark">対象動物の性別※</span></h5>
+      <div>
           <%= f.radio_button :animal_sex, "male", checked: "checked" %>
           <%= f.label :animal_sex, "オス" %>
           <br>
@@ -80,13 +92,13 @@
           <%= f.label :animal_sex, "不明" %>
         </div>
 
-      <h4>動物の年齢(およそ)※</h4>
+      <h5 class="mt-3"> <span class="mark">動物の年齢(およそ)※</span></h5>
       <%= f.select :animal_age, [["不明", "不明"], ["0~3才", "0~3才"],["4~6才", "4~6才"],["7~9才", "7~9才"],["10才以上", "10才以上"]], {include_blank: '年齢選択'} %>
 
-      <h4>説明※</h4>
-      <%= f.text_area :introduction %>
+      <h5 class="mt-3"> <span class="mark">説明※</span></h5>
+      <%= f.text_area :introduction, rows: '5', cols: "50", placeholder: "何でも書いてみましょう" %>
 
-      <%= f.submit '投稿' %>
+      <%= f.submit '投稿',class: "btn btn-success" %>
 
     <% end %>
       
