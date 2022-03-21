@@ -159,12 +159,11 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       
-      <span class="text-white">
+      <div>
         <%= link_to root_path do %>
           <%= image_tag 'logo.png', size: '300x50' %>
         <% end %>
-      </span>
-
+      </div>
       
       <span>
         <% if user_signed_in? %>
