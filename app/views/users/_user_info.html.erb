@@ -1,7 +1,7 @@
   <div>
     <%= image_tag user.get_image("200x300") %>
     <p>カテゴリー：<%= user.category_i18n %></p>
-    <p>名前：<%= user.name %></p>
+    <p>名前：<%= user.nickname %></p>
     <p>フォロー数：
       <%= link_to user_followings_path(user) do %>
         <%= user.followings.count %>

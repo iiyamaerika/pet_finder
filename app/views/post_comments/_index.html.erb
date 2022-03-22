@@ -5,7 +5,7 @@
       <td>
         <%= link_to user_path(post_comment.user) do%>
           <%= image_tag post_comment.user.get_image("100x100") %>
-          <p><%= post_comment.user.name %></p>
+          <p><%= post_comment.user.nickname %></p>
        <% end %>
       </td>
       <td  class="align-middle">

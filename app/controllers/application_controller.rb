@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:category, :name, :name_kana, :telephone_number, :address, :image])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:category, :name, :name_kana, :telephone_number, :address, :image])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:category, :name, :name_kana, :nickname, :telephone_number, :address, :image])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:category, :name, :name_kana, :nickname, :telephone_number, :address, :image])
   end
 
   def set_search
