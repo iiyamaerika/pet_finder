@@ -1,4 +1,14 @@
-<h2>本当に退会しますか？</h2>
-
-<%= link_to "退会しない", user_path(current_user) %>
-<%= link_to "退会する", user_withdraw_path(current_user), method: :patch %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 mt-3 offset-md-3">
+      <%= image_tag 'dog-unsubscribe.jpg', size: "500x400", class: "m-5" %>
+    </div>
+    <div class="col-md-12 mt-3 offset-md-4">
+      <h2>本当に退会しますか？</h2>
+      <div class="mt-5 mb-5">
+        <%= link_to "退会しない", user_path(current_user), class: "btn btn-success mr-5" %>
+        <%= link_to "退会する", user_withdraw_path(current_user), method: :patch, class: "btn btn-danger ml-5" %>
+      </div>
+    </div>
+  </div>
+</div>

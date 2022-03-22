@@ -1,4 +1,4 @@
-<div class="notification-view">
+<div class="notification-view m-2">
   <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
   <br>
   <% if !@comment.nil? %>

@@ -1,3 +1,7 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 mt-5 mb-5 offset-md-4">
+
 <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">
   <%= @user.name %>さんとのメッセージ
 </h2>
@@ -19,7 +23,11 @@
 </div>
 
 <%= form_with model: @chat, data:{remote: true} do |f| %>
-  <%= f.text_field :message %>
+  <%= f.text_area :message, rows: '5', cols: "50", placeholder: "やりとりをしてみましょう" %>
   <%= f.hidden_field :room_id %>
-  <%= f.submit '送信' %>
+  <%= f.submit '送信',class: "btn btn-primary"  %>
 <% end %>
+
+    </div>
+  </div>
+</div>

@@ -1,9 +1,19 @@
-<h3>通知一覧</h3>
-  <%= link_to "全件削除", notification_path(@notifications), method: :delete %>
-  <% if @notifications.exists? %>
-    <div>
-      <%= render @notifications %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 mt-5 d-flex justify-content-center">
+      <h3>通知</h3>
     </div>
-  <% else %>
-    <p>通知はありません</p>
-  <% end %>
+    <div class="col-md-12 mt-3 mb-3 offset-md-4">
+      <%= link_to "全件削除", notification_path(@notifications), method: :delete, class: "btn btn-danger" %>
+    </div>
+    <div class="col-md-12 mt-3 mb-5 d-flex justify-content-center">
+      <% if @notifications.exists? %>
+        <div>
+          <%= render @notifications %>
+        </div>
+      <% else %>
+        <p>通知はありません</p>
+      <% end %>
+    </div>
+  </div>
+</div>

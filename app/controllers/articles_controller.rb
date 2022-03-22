@@ -4,8 +4,8 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all.with_attached_image.includes([:image_attachment]).order(created_at: :desc).page(params[:page]).per(12)
-    @search = Article.ransack(params[:q]) #検索機能で使用
-    @search_articles = @search.result(distinct: true) #検索結果表示で使用
+    @search = Article.ransack(params[:q]) # 検索機能で使用
+    @search_articles = @search.result(distinct: true) # 検索結果表示で使用
     @q = Article.ransack(params[:q])
   end
 
@@ -63,5 +63,4 @@ class ArticlesController < ApplicationController
       redirect_to articles_path
     end
   end
-
 end

@@ -1,13 +1,13 @@
-<%= search_form_for q, url: searches_search_path, class: "search-form" do |f| %>
-  <%= f.search_field :title_or_introduction_or_animal_breed_or_place_or_animal_type_cont, placeholder: 'キーワードから探す' %>
-  <%= f.collection_select :prefecture_eq, JpPrefecture::Prefecture.all, :name, :name, { include_blank: '対象地域' } %>
+<%= search_form_for q, url: searches_search_path, class: "search-form p-3 m-2" do |f| %>
+  <%= f.text_field :title_or_introduction_or_animal_breed_or_place_or_animal_type_cont, placeholder: 'キーワードから探す', class: "p-1 m-1" %><br>
+  <%= f.collection_select :prefecture_eq, JpPrefecture::Prefecture.all, :name, :name, { include_blank: '対象地域' }, class: "p-1 m-1" %><br>
     <!--都道府県のセレクトボックスなので_eqで完全一致する-->
-  <%= f.select :status_eq, Article.statuses_i18n.invert.map{|key, value| [key, Article.statuses[value]]}, { include_blank: t('状況') } %>
-  <%= f.select :animal_sex_eq, Article.animal_sexes_i18n.invert.map{|key, value| [key, Article.animal_sexes[value]]}, { include_blank: t('性別') } %>
+  <%= f.select :status_eq, Article.statuses_i18n.invert.map{|key, value| [key, Article.statuses[value]]}, { include_blank: t('状況') }, class: "p-1 m-1" %><br>
+  <%= f.select :animal_sex_eq, Article.animal_sexes_i18n.invert.map{|key, value| [key, Article.animal_sexes[value]]}, { include_blank: t('性別') }, class: "p-1 m-1" %><br>
     <!--性別のセレクトボックスなので_eqで完全一致、enumなのでハッシュ型で探す-->
-  <%= f.select :animal_type_eq, [['犬', '犬'], ['猫', '猫'], ['爬虫類', '爬虫類'],['不明','不明']], { include_blank: '動物種別' } %>
+  <%= f.select :animal_type_eq, [['犬', '犬'], ['猫', '猫'], ['爬虫類', '爬虫類'],['不明','不明']], { include_blank: '動物種別' }, class: "p-1 m-1" %><br>
   
-    <%= f.button type: "submit" do %>
-      <i class="fas fa-search"></i>
-    <% end %>
+    <%= f.submit "検索",class: "btn btn-outline-primary m-1" %>
+    <!--  <i class="fas fa-search"></i>-->
+    <!--<%# end %>-->
   <% end %>

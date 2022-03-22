@@ -1,3 +1,10 @@
-<h2>いいねした投稿一覧</h2>
-<%= render 'articles/article_outline', articles: @favorite_articles %>
-<%= paginate @favorite_articles %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 mt-5">
+      <h2>いいねした投稿一覧</h2>
+        <%= render 'articles/article_outline', articles: @favorite_articles %>
+        <%= paginate @favorite_articles %>
+      </div>
+
+  </div>
+</div>

@@ -1,5 +1,16 @@
-<%= render 'searches/search_form', q: @q %>
-<h1>投稿一覧</h1>
-<%= render 'article_outline', articles: @articles %>
-
-<%= paginate @articles %>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-md-3 mt-5 ml-5">
+        <h5 class="ml-4">絞り込み検索</h5>
+          <%= render 'searches/search_form', q: @q %>
+      </div>
+      
+      <div class="col-md-8 mt-5">
+          <h1>投稿一覧</h1>
+          <div class="card-deck">
+            <%= render 'article_outline', articles: @articles %>
+          </div>
+          <%= paginate @articles %>
+      </div>
+  </div>
+</div>

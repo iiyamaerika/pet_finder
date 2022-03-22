@@ -1,16 +1,60 @@
-<h2>トップページ</h2>
-<%= image_tag 'dog-top.jpg', size: '800x500' %>
-<h4>新着記事</h4>
-<%= render 'articles/article_outline', articles: @articles %>
+<div class="card mb-4">
+  <%= render 'homes/carousel' %>
+  <div class="cover-text">
+    <h4 class="text-dark font-weight-bold ">ようこそ、PetFinderへ</h4>
+    <p class="text-dark  font-weight-bold">このサイトは、あなたの大切なペットを探すお手伝いをします。</p>
+    <p class="text-dark  font-weight-bold">ペットは大切な家族の一員です。</p>
+    <p class="text-dark  font-weight-bold">あなたの大事な家族が1日も早く見つかりますように</p>
+  </div>
+</div>
 
-<h4>迷子・保護 地図一覧</h4>
-<div id='map'></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-3">
+      <h2 class="col-md-6 mark">迷子・保護　発生マップについて</h2>
+    </div>
+    <div class="col-md-12 mt-3">
+      <h5>迷子・保護　発生マップとは...</h5>
+    </div>
+    <div class="col-md-12 mt-3">
+      <p class="text-secondary">こちらのページの地図は、現在までに投稿されている迷子・保護されたペットの分布図です。</p>
+      <p class="text-secondary">地図上のピンをクリックしていただくと、投稿記事のページへ移動します。</p>
+      <p class="text-secondary">お近くに住まわれている方で、投稿されている動物たちにお心当たりのある方は</p>
+      <p class="text-secondary">ぜひこちらのサイトまで情報をお寄せください。</p>
+    </div>
+    
+    <div class="col-md-12 mt-3 mb-5">
+      <div id='map'></div>
+    </div>
+ 
+    <div class="col-md-12">
+      <h4  class="col-md-3 mark">新着記事（3件）</h4>
+    </div>
+    <div class="col-md-12 mt-4">
+      <%= render 'articles/article_outline', articles: @articles %>
+    </div>
+    <div class="col-md-12 mt-2 mb-5 offset-md-10">
+    <%= link_to "掲示板へ", articles_path, class: "btn btn-warning" %>
+    </div>
+  </div>
+</div>
+
 
 <style>
 #map {
   height: 600px;
-  width: 60%;
+  width: 90%;
 }
+
+    .cover-text {
+      position: absolute;
+      padding: 50px;
+      font-size: 5px;
+      color: black;
+      z-index: 1;
+    }
+
 </style>
 
 <!-- js部分 -->
@@ -38,17 +82,17 @@
       transitLayer.setMap(map);
 
       //複数マーカー ここから
-      <% @articles.each do |article|%>
-        ( function() { 
+      <% @map_articles.each do |article|%>
+        ( function() {
           let markerLatLng = new google.maps.LatLng({lat: <%= article.lat %>, lng: <%= article.lng %>}); // 緯度経度のデータ作成
-          let marker = new google.maps.Marker({ 
-            position: markerLatLng, 
-            map: map 
+          let marker = new google.maps.Marker({
+            position: markerLatLng,
+            map: map
           });
     　　　//マーカーをクリックしたとき、詳細情報を表示
           let infowindow = new google.maps.InfoWindow({
             position: markerLatLng,
-            content: "<a href='<%= article_url(article.id) %>' target='_blank'><%= article.title %></a>"
+            content: "<a href='<%= article_url(article.id) %>' target='_blank'><%= article.status_i18n %><br><%= article.title %><br><%= article.introduction %></a>"
           }); //ここで詳細ページへのリンクを表示させる
           marker.addListener('click', function() {
             infowindow.open(map, marker);
@@ -56,8 +100,9 @@
 
        })();
       <% end %>
-      //複数マーカー ここまで  
+      //複数マーカー ここまで
   }
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+
