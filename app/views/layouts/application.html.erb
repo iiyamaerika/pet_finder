@@ -18,6 +18,12 @@
       <% end %>
     <% end %>
     <%= yield %>
+    <span id="back">
+      <a href="">
+        <%= image_tag asset_path('arrow.png'), data: {"turbolinks"=>false}, class: "arrow" %>
+        <!--falseでturbolinksの誤作動を防ぐ-->
+      </a>
+    </span>
     <%= render 'layouts/footer' %>
   </body>
 </html>
