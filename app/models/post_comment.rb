@@ -1,12 +1,11 @@
 class PostComment < ApplicationRecord
-  
   belongs_to :user
   belongs_to :article
-  has_many :notifications, dependent: :destroy #通知機能
+  has_many :notifications, dependent: :destroy # 通知機能
 
   validates :comment, presence: true
-  
-  #通知機能
+
+  # 通知機能
   def create_notification_comment!(current_user, post_comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
     temp_ids = PostComment.select(:user_id).where(post_comment_id: id).where.not(user_id: current_user.id).distinct
@@ -31,6 +30,4 @@ class PostComment < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-  
-  
 end

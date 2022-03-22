@@ -59,16 +59,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  
-  #deviseでアカウント情報を変更する際に現在のパスワード入力を省くメソッド
+
+  # deviseでアカウント情報を変更する際に現在のパスワード入力を省くメソッド
   def update_resource(resource, params)
     resource.update_without_current_password(params)
   end
 
-  #更新後のパスを指定。マイページに戻るように設定。
+  # 更新後のパスを指定。マイページに戻るように設定。
   def after_update_path_for(resource)
     user_path(@user.id)
   end
-  
-  
 end

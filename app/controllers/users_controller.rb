@@ -13,7 +13,6 @@ class UsersController < ApplicationController
   def shelter
     @user = User.find(params[:user_id])
     @articles = @user.articles.with_attached_image.order(created_at: :desc).page(params[:page]).per(6)
-
   end
 
   def unsubscribe
@@ -35,6 +34,4 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-
-
 end

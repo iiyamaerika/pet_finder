@@ -1,6 +1,6 @@
 class PostCommentsController < ApplicationController
-  before_action :authenticate_user! #ログインユーザーのみコメント可能
-  
+  before_action :authenticate_user! # ログインユーザーのみコメント可能
+
   def create
     article = Article.find(params[:article_id])
     @comment = current_user.post_comments.new(post_comment_params)
@@ -21,11 +21,10 @@ class PostCommentsController < ApplicationController
     flash[:notice] = 'コメントを削除しました'
     redirect_to article_path(params[:article_id])
   end
-  
+
   private
 
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
-  
 end

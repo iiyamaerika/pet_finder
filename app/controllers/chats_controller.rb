@@ -1,5 +1,4 @@
 class ChatsController < ApplicationController
-
   def index
     # 相互フォローのみDM可能
     @users = current_user.followings.with_attached_image.includes([:image_attachment]) & current_user.followers.with_attached_image.includes([:image_attachment])
@@ -10,13 +9,13 @@ class ChatsController < ApplicationController
     rooms = current_user.user_rooms.pluck(:room_id)
     user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
 
-    unless user_rooms.nil?
-      @room = user_rooms.room
-    else
+    if user_rooms.nil?
       @room = Room.new
       @room.save
       UserRoom.create(user_id: current_user.id, room_id: @room.id)
       UserRoom.create(user_id: @user.id, room_id: @room.id)
+    else
+      @room = user_rooms.room
     end
 
     @chats = @room.chats
@@ -37,7 +36,6 @@ class ChatsController < ApplicationController
       @room = @chat.room
       @room.create_notification_dm!(current_user, @chat.id, @user.id)
     end
-
   end
 
   private

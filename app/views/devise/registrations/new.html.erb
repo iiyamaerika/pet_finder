@@ -9,6 +9,8 @@
 <%= form_with model: @user, url: user_registration_path do |f| %>
 
   <p class="mark">※保護施設で登録すると、施設名（カナ含）・電話番号・住所は公開されます。</p>
+  <p class="mark">公開を望まない場合は『個人ユーザー』としてご登録ください。</p>
+  <p class="mark">ご利用できる機能に違いはございません。</p>
   <div class="form-group">
     <%= f.radio_button :category, "private_user", checked: "checked" %>
     <%= f.label :category, "個人ユーザー" %>
