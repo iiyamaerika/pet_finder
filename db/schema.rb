@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 2022_03_16_123009) do
     t.integer "category", null: false
     t.string "name", null: false
     t.string "name_kana", null: false
+    t.string "nickname", null: false
     t.string "image"
     t.string "address", null: false
     t.string "telephone_number", null: false

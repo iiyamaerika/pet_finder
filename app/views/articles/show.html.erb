@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3 mt-5 ml-5">
-      <h5 class="ml-4">絞り込み検索</h5>
+      <h5 class="ml-4">絞り込み検索<i class="fas fa-search-plus"></i></h5>
       <%= render 'searches/search_form', q: @q %>
     </div>
 
@@ -14,7 +14,7 @@
         <%= render "favorites/favorite_btn", article: @article %>
       </div>
       <% end %>
-      <p>投稿者：<%= link_to @article.user.name, user_path(@article.user.id) %></p>
+      <p>投稿者：<%= link_to @article.user.nickname, user_path(@article.user.id) %></p>
       <p>タイトル：<%= @article.title %></p>
       <p>状況：<%= @article.status_i18n %></p>
       <p>迷子になった・保護した日：<%= @article.date %></p>

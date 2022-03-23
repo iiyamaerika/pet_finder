@@ -28,6 +28,11 @@
     <%= f.label :お名前or施設名称（カナ） %><br>
     <%= f.text_field :name_kana, class: 'form-control user-name-kana' %>
   </div>
+  
+  <div class="form-group">
+    <%= f.label :ニックネーム（実際にサイト上で表示されるお名前です） %><br>
+    <%= f.text_field :nickname, class: 'form-control user-nickname' %>
+  </div>
 
   <div class="form-group">
     <%= f.label :メールアドレス %><br />
