@@ -18,3 +18,14 @@ import "packs/jquery.jpostal.js"
 Rails.start()
 // Turbolinks.start()
 ActiveStorage.start()
+
+
+// トップへ戻る
+$(function() {
+  $('#back a').on('click',function(event){
+    $('body, html').animate({
+      scrollTop:0
+    }, 800);
+    event.preventDefault();
+  });
+});
