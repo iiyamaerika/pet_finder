@@ -72,10 +72,11 @@
         </p>
       </li>
       <li class="button">
+        <p>
         <% if unchecked_notifications.any? %>
           <i class="fas fa-circle" style="color: gold;"></i>
         <% end %>
-        <p>
+        
           <%= link_to notifications_path, method: :get, class: "header-text" do %>
             通知<i class="fas fa-bell"></i>
           <% end %>

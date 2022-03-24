@@ -1,5 +1,7 @@
   <div>
-    <%= image_tag user.get_image("200x300") %>
+    <div class="mt-2 mb-2">
+      <%= image_tag user.get_image("200x300"), class: "rounded-circle" %>
+    </div>
     <p>カテゴリー：<%= user.category_i18n %></p>
     <p>名前：<%= user.nickname %></p>
     <p>フォロー数：
@@ -13,7 +15,7 @@
       <% end %>
     </p>
     <p>サイト登録日<%= user.created_at.strftime('%Y/%m/%d') %></p>
-    
+
     <% if user == current_user %>
     <%= link_to "会員情報変更", edit_user_registration_path(current_user.id), class: "btn btn-sm btn btn-primary" %>
   <% else %>
@@ -23,7 +25,7 @@
       <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-sm btn-success" %>
     <% end %>
   <% end %>
-  
+
   <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
     <%= link_to 'chatを始める', chat_path(user.id) %>
   <% end %>

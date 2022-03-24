@@ -4,12 +4,15 @@
         <h5 class="ml-4">絞り込み検索<i class="fas fa-search-plus"></i></h5>
           <%= render 'searches/search_form', q: @q %>
       </div>
-      
+
       <div class="col-md-8 mt-5">
-          <h1>投稿一覧</h1>
-          <div class="card-deck">
+        <div class="mb-3">
+        <%= link_to "新しい順", articles_path(sort: 'created_at DESC') %>
+        |
+        <%= link_to "古い順", articles_path(sort: 'created_at ASC') %>
+      </div>
+          <h1 class="mb-3">投稿一覧</h1>
             <%= render 'article_outline', articles: @articles %>
-          </div>
           <%= paginate @articles %>
       </div>
   </div>
