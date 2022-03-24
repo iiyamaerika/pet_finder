@@ -20,7 +20,7 @@
   list-style: none;
 }
 
- 
+
 .navigation{
   /* flexboxで要素を真ん中に指定 */
   display: flex;
@@ -81,4 +81,18 @@
 .arrow{
   width:      50px;
   height:     50px;
+}
+
+@media screen and (max-width: 1024px) {
+  header {
+    width: 100%;
+  }
+  .nav-list {
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
 }

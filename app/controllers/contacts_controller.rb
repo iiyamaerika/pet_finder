@@ -1,4 +1,6 @@
 class ContactsController < ApplicationController
+  before_action :authenticate_user!, except: [:new, :confirm, :back, :create, :done]
+  
   def new
     @contact = Contact.new
   end
