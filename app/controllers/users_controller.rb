@@ -26,12 +26,6 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def update
-    @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to admin_root_path
-  end
-
   private
 
   def ensure_correct_user
@@ -39,10 +33,6 @@ class UsersController < ApplicationController
     unless @user == current_user
       redirect_to user_path(current_user)
     end
-  end
-
-  def user_params
-    params.require(:user).permit(:category, :name, :name_kana, :nickname, :telephone_number, :address, :is_deleted)
   end
 
 end
