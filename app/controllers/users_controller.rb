@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @articles = current_user.articles.with_attached_image.order(created_at: :desc).page(params[:page]).per(6)
     @user = User.find(params[:id])
+    @articles = @user.articles.with_attached_image.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def shelter
