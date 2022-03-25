@@ -82,6 +82,15 @@
           <% end %>
         </p>
       </li>
+      <% if current_user.admin? %>
+      <li class="button">
+        <p>
+          <%= link_to admin_root_path, method: :get, class: "header-text" do %>
+            管理者ページ<i class="fas fa-user-cog"></i>
+          <% end %>
+        </p>
+      </li>
+      <% end %>
       
       
 
