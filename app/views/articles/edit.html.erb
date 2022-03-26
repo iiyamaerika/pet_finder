@@ -1,4 +1,10 @@
-<div class="col-md-12 mt-5 offset-md-3">
-  <h2>投稿編集ページ</h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 mt-5 d-flex justify-content-center">
+      <h2>投稿編集ページ</h2>
+    </div>
+    <div class="col-md-8 mt-2 mb-5 offset-md-4">
+      <%= render 'form', article: @article %>
+    </div>
+  </div>
 </div>
-  <%= render 'form', article: @article %>

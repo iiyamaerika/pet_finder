@@ -17,7 +17,19 @@
         <%= render 'layouts/flash_message' %>
       <% end %>
     <% end %>
+
+    <!--deivseのエラー用のフラッシュメッセージを表示する時はここに書く-->
+    <% if alert.present? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= alert %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% end %>
+
     <%= yield %>
+
     <span id="back">
       <a href="">
         <%= image_tag asset_path('arrow.png'), data: {"turbolinks"=>false}, class: "arrow" %>

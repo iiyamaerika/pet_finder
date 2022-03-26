@@ -1,9 +1,13 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12 mt-5 mb-5 offset-md-4">
+    <div class="col-md-8 mt-5 mb-5 offset-md-4">
+      
+      <div class="ml-5 mb-3">
+      <%= image_tag @user.get_image("300x300"), class: "rounded-circle" %>
+      </div>
 
-<h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">
-  <%= @user.nickname %>さんとのメッセージ
+<h2 class="mb-5" id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">
+  <%= @user.name %>さんとのメッセージ
 </h2>
 
 <div class="message" style="width: 400px;">
@@ -23,7 +27,7 @@
 </div>
 
 <%= form_with model: @chat, data:{remote: true} do |f| %>
-  <%= f.text_area :message, rows: '5', cols: "50", placeholder: "やりとりをしてみましょう" %>
+  <%= f.text_field :message, :size => "40", placeholder: "やりとりをしてみましょう"  %>
   <%= f.hidden_field :room_id %>
   <%= f.submit '送信',class: "btn btn-primary"  %>
 <% end %>

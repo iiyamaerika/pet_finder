@@ -65,6 +65,8 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
+        nickname: "ニックネーム"
+        admin: "管理者"
       article:
         status: "状況"
         title: "タイトル"

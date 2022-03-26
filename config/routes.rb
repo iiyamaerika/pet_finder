@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
+  
+  namespace :admin do
+    root to: 'users#index'
+    resources :users, only: [:index, :edit, :update] 
+  end
 
   root to: 'homes#top'
   get "home/about" => "homes#about", as: 'about'

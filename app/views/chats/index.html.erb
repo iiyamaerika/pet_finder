@@ -21,7 +21,7 @@
              <% @users.each do |user| %>
              <td class="align-middle">
                <%= link_to chat_path(user) do %>
-               <%= image_tag user.get_image("200x300") %>
+               <%= image_tag user.get_image("200x300"), class: "rounded-circle" %>
                <% end %>
              </td>
              <td class="align-middle">
