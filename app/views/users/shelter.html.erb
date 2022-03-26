@@ -20,7 +20,7 @@
           <% end %>
         </p>
       </div>
-  
+
       <% if user_signed_in? %>
         <% if @user == current_user %>
           <%= link_to "会員情報変更", edit_user_registration_path(current_user.id), class: "btn btn-sm btn btn-primary" %>
@@ -34,13 +34,12 @@
       <% end %>
 
     </div>
-    
+
     <div  class="col-md-8 mt-5">
       <h2 class="mb-4">投稿記事一覧</h2>
       <%= render 'articles/article_outline', articles: @articles %>
       <%= paginate @articles %>
     </div>
-    
+
   </div>
 </div>
-      

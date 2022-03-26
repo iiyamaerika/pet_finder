@@ -57,7 +57,9 @@
             <% end %>
           </td>
           <td class="align-middle">
-            <%= link_to "編集", edit_admin_user_path(user), class: "btn btn-warning" %>
+            <%  unless user.admin %>
+              <%= link_to "編集", edit_admin_user_path(user), class: "btn btn-warning" %>
+            <% end %>
           </td>
           </tr>
           <% end %>
