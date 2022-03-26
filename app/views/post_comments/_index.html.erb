@@ -4,7 +4,7 @@
     <tr>
       <td >
         <%= link_to user_path(post_comment.user) do%>
-          <%= image_tag post_comment.user.get_image("100x100"), class: "rounded-circle" %>
+          <%= image_tag post_comment.user.get_image(100,100), class: "rounded-circle" %>
        <% end %>
       </td>
       <td class="align-middle">

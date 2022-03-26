@@ -3,7 +3,9 @@
     <div class="col-md-3 mt-5 ml-5 mb-5">
       <h4>保護施設詳細</h4>
       <div>
-        <%= image_tag @user.get_image("200x300") %>
+        <div class="mt-2 mb-2">
+          <%= image_tag @user.get_image(200,200), class: "rounded-circle" %>
+        </div>
         <p>施設名称：<%= @user.name %></p>
         <p>施設名称(カナ)：<%= @user.name_kana %></p>
         <p>施設住所：<%= @user.address %></p>

@@ -50,12 +50,12 @@ class User < ApplicationRecord
   end
 
   # 投稿画像がない場合は"noimage.png"を表示させる
-  def get_image(size)
+  def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/noimage.png')
       image.attach(io: File.open(file_path), filename: 'noimage.png', content_type: 'image/png')
     end
-    image.variant(resize: size).processed
+    image.variant(resize_to_fill: [width, height]).processed
   end
 
   # is_deletedがfalseならtrueを返すようにしている

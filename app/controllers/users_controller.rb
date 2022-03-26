@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :ensure_correct_user, only: [:update]
 
   def index
     @shelter_users = User.shelter.with_attached_image.includes([:image_attachment]).page(params[:page]).per(6)
@@ -8,6 +7,15 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @articles = @user.articles.with_attached_image.order(created_at: :desc).page(params[:page]).per(6)
+  end
+
+  # 他のユーザーが編集しようとするとトップページに遷移させる
+  def edit
+    redirect_to root_path
+  end
+  
+  def update
+    redirect_to root_path
   end
 
   def shelter
@@ -26,13 +34,5 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  private
-
-  def ensure_correct_user
-    @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to user_path(current_user)
-    end
-  end
 
 end

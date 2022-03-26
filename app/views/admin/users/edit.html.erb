@@ -52,8 +52,11 @@
           </tr>
         </table>
       </div>
-      <div class="mb-5">
+      <div class="mb-3">
         <%= f.submit "変更を保存", class: 'btn btn-success' %>
+      </div>
+      <div class="mb-5">
+        <%= link_to "戻る", admin_root_path, class: 'btn btn-secondary' %>
       </div>
       <% end %>
     </div>
