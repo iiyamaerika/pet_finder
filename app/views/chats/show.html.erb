@@ -3,7 +3,7 @@
     <div class="col-md-8 mt-5 mb-5 offset-md-4">
       
       <div class="ml-5 mb-3">
-      <%= image_tag @user.get_image("300x300"), class: "rounded-circle" %>
+      <%= image_tag @user.get_image(300,300), class: "rounded-circle" %>
       </div>
 
 <h2 class="mb-5" id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">
