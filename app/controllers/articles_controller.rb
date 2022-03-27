@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :ensure_correct_user, only: [:update, :edit, :destroy]
 
   def index
-    @articles = Article.all.with_attached_image.includes([:image_attachment]).order(params[:sort]).page(params[:page]).per(12)
+    @articles = Article.all.with_attached_image.includes([:image_attachment]).order(params[:sort]).page(params[:page]).per(9)
     @search = Article.ransack(params[:q]) # 検索機能で使用
     @search_articles = @search.result(distinct: true) # 検索結果表示で使用
     @q = Article.ransack(params[:q])

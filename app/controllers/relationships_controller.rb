@@ -21,12 +21,12 @@ class RelationshipsController < ApplicationController
   # フォロー一覧
   def followings
     user = User.find(params[:user_id])
-    @users = user.followings.with_attached_image.includes([:image_attachment])
+    @users = user.followings.with_attached_image.includes([:image_attachment]).page(params[:page]).per(6)
   end
 
   # フォロワー一覧
   def followers
     user = User.find(params[:user_id])
-    @users = user.followers.with_attached_image.includes([:image_attachment])
+    @users = user.followers.with_attached_image.includes([:image_attachment]).page(params[:page]).per(6)
   end
 end
