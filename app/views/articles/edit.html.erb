@@ -6,5 +6,8 @@
     <div class="col-md-8 mt-2 mb-5 offset-md-4">
       <%= render 'form', article: @article %>
     </div>
+    <div class="col-md-12 mb-5 offset-md-7">
+     <%= link_to "戻る", article_path(@article), class: "btn btn-secondary" %>
+    </div>
   </div>
 </div>
