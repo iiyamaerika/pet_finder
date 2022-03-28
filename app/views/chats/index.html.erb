@@ -17,8 +17,8 @@
         </thead>
         
          <tbody>
+            <% @users.each do |user| %>
            <tr>
-             <% @users.each do |user| %>
              <td class="align-middle">
                <%= link_to chat_path(user) do %>
                <%= image_tag user.get_image(100,100), class: "rounded-circle" %>
@@ -34,8 +34,8 @@
              <td class="align-middle">
                <%= link_to "トークルームへ", chat_path(user), class: "btn btn-success" %>
              </td>
-             <% end %>
            </tr>
+           <% end %>
          </tbody>
          </table>
       </div>
