@@ -1,7 +1,11 @@
 class ChatsController < ApplicationController
   def index
     # 相互フォローのみDM可能
-    @users = current_user.followings.with_attached_image.includes([:image_attachment]) & current_user.followers.with_attached_image.includes([:image_attachment])
+    # 以前やりとりしたことのあるユーザーを一覧で表示する
+    room_ids = UserRoom.where(user_id: current_user.id).pluck(:room_id) #ログイン中のユーザーが持っているroom_idを探す
+    #探してきたroom_idを持っているユーザーの中で、ログイン中ユーザーじゃない方のチャット相手のidを持ってくる
+    chat_user_ids = UserRoom.where(room_id: room_ids).where.not(user_id: current_user.id).pluck(:user_id)
+    @users = User.where(id: chat_user_ids)
   end
 
   def show
