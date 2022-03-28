@@ -1,0 +1,10 @@
+
+<%= form_with model: @user, url: admin_users_search_path, :method => 'get', class: "search-form" do |f| %>
+<div class="input-group">
+  <%= f.text_field :word %>
+  <%= f.select :category, User.categories.keys.map {|k| [I18n.t("enums.user.category.#{k}"), k]}, {prompt: 'カテゴリー'} %>
+  <span class="input-group-btn">
+  <%= f.submit '検索', class: "btn btn-success" %>
+  </span>
+</div>
+<% end %>

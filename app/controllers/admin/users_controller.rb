@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :admin_user
-  
+
   def index
     @users = User.all.order(created_at: :desc).with_attached_image.includes([:image_attachment]).page(params[:page]).per(6)
   end
@@ -14,6 +14,16 @@ class Admin::UsersController < ApplicationController
     @user.update(user_params)
     redirect_to admin_root_path
   end
+
+  def search
+    @category = params[:category]
+    if @category != ""
+      @users = User.looks(params[:category],params[:word]).order(created_at: :desc).with_attached_image.includes([:image_attachment]).page(params[:page]).per(6)
+    else
+      @users = User.searches(params[:word]).order(created_at: :desc).with_attached_image.includes([:image_attachment]).page(params[:page]).per(6)
+    end
+  end
+
 
   private
 
