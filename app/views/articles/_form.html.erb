@@ -129,6 +129,10 @@
 
         });
       }
+      // ページを読み込んでから処理を実行させる（地図が表示されないエラー対策）
+      window.onload = function () {
+        initMap();
+      }
 
       // 検索後のマップ作成
       let geocoder
