@@ -90,4 +90,21 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
+  # admin検索(カテゴリの指定なしの場合)
+  def self.searches(search)
+      User.where(['name LIKE ?', "%#{search}%"])
+  end
+
+  # admin検索(カテゴリの指定ありの場合)
+  def self.looks(category,word)
+    if category == "private_user"
+      @user = User.where("name LIKE?", "%#{word}%").and(where(category: "private_user"))
+    else
+      @user = User.where("name LIKE?", "%#{word}%").and(where(category: "shelter"))
+    end
+  end
+
+
+
 end
