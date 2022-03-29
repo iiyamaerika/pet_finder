@@ -9,6 +9,11 @@
     <div class="col-md-12 mt-3 offset-md-1">
       <%= paginate @users %>
     </div>
+    <div class="col-md-12 mt-3 right">
+      <%= link_to "新しい順", admin_users_path(sort: 'created_at DESC') %>
+      |
+      <%= link_to "古い順", admin_users_path(sort: 'created_at ASC') %>
+    </div>
     <div class="col-md-12 mt-2 d-flex justify-content-center">
     <!--テーブルの幅の横幅が足りなくなった場合に、横スクロールさせる-->
     <div class="table-responsive">

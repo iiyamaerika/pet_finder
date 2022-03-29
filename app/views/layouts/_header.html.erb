@@ -43,6 +43,7 @@
           <% end %>
         </p>
       </li>
+      <% if current_user.admin == false %>
       <li class="button">
         <p>
           <%= link_to edit_user_registration_path, method: :get, class: "header-text" do %>
@@ -50,6 +51,7 @@
           <% end %>
         </p>
       </li>
+      <% end %>
       <li class="button">
         <p>
           <%= link_to article_favorites_path(current_user.id), method: :get, class: "header-text" do %>
