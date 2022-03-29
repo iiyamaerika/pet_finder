@@ -2,15 +2,42 @@
 <html>
   <head>
     <title>PetFinder</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
+    <% if user_signed_in? %>
+      <% if flash.present? %>
+        <%= render 'layouts/flash_message' %>
+      <% end %>
+    <% end %>
+
+    <!--deivseのエラー用のフラッシュメッセージを表示する時はここに書く-->
+    <% if alert.present? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= alert %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% end %>
+
     <%= yield %>
+
+    <span id="back">
+      <a href="">
+        <%= image_tag asset_path('arrow.png'), data: {"turbolinks"=>false}, class: "arrow" %>
+        <!--falseでturbolinksの誤作動を防ぐ-->
+      </a>
+    </span>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

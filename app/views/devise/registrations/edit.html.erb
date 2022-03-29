@@ -1,0 +1,80 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 mt-5 offset-md-3">
+
+      <h1 class="mb-4">会員情報変更</h1>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="form-group">
+        <%= f.radio_button :category, "private_user" %>
+        <%= f.label :category, "個人ユーザー" %>
+        <br>
+        <%= f.radio_button :category, "shelter" %>
+        <%= f.label :category, "保護施設" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :お名前or施設名称 %><br>
+        <%= f.text_field :name, class: 'form-control user-name' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :お名前or施設名称（カナ） %><br>
+        <%= f.text_field :name_kana, class: 'form-control user-name-kana' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :ニックネーム（実際にサイト上で表示されるお名前です） %><br>
+        <%= f.text_field :nickname, class: 'form-control user-nickname' %>
+  </div>
+
+      <div class="form-group">
+        <%= f.label :メールアドレス %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control email' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :電話番号（ハイフンなし） %><br>
+        <%= f.text_field :telephone_number, class: 'form-control user-telephone-number' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :住所 %><br>
+        <%= f.text_field :address, class: 'form-control user-address' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :ユーザー画像 %><br>
+        <%= f.file_field :image %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :パスワード %> <i>(変更したくない場合は空白のままにしてください。)</i><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+        <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> 文字以上</em>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :パスワード（確認用） %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="actions mt-3">
+        <%= f.submit "更新",class: "btn btn-success" %>
+      </div>
+    <% end %>
+
+      <div class="right">
+        <div>
+          <p><%= link_to '退会する', user_unsubscribe_path(current_user),class: "btn btn-danger" %></p>
+          <p><%= link_to "Back", :back, class: "btn btn-secondary" %></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

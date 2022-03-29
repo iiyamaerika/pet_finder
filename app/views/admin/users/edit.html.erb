@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 mt-5 d-flex justify-content-center">
+      <h3 class="font-weight-bold"><%= @user.name %> 様の会員情報編集</h3>
+    </div>
+    <div class="col-md-12 mt-5 d-flex justify-content-center">
+      <%= form_with model: @user, url:admin_user_path, local: true do |f| %>
+      <div class="table-responsive">
+        <table class="table table-hover table-condensed">
+          <tr>
+            <td class="font-weight-bold">会員ID</td>
+            <td><%= @user.id %></td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold">カテゴリー</td>
+            <td>
+              <%= f.radio_button :category, "private_user", checked: "checked" %>
+              <%= f.label :category, "個人ユーザー" %>
+              <br>
+              <%= f.radio_button :category, "shelter" %>
+              <%= f.label :category, "保護施設" %>
+            </td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold">氏名</td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold">フリガナ</td>
+            <td><%= f.text_field :name_kana %></td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold">住所</td>
+            <td><%= f.text_field :address %></td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold">電話番号</td>
+            <td><%= f.text_field :telephone_number %></td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold">メールアドレス</td>
+            <td><%= f.text_field :email %></td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold">会員ステータス</td>
+            <td>
+              <%= f.radio_button :is_deleted, "false" %>
+              <%= f.label :is_deleted, "有効" %>
+              <%= f.radio_button :is_deleted, "true" %>
+              <%= f.label :is_deleted, "退会" %>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="mb-3">
+        <%= f.submit "変更を保存", class: 'btn btn-success' %>
+      </div>
+      <div class="mb-5">
+        <%= link_to "戻る", admin_root_path, class: 'btn btn-secondary' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

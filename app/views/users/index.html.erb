@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-7 mt-5 offset-md-5">
+      <h2>施設一覧</h2>
+    </div>
+
+    <div class="col-md-12 mt-5 d-flex justify-content-center">
+
+    <!--テーブルの幅の横幅が足りなくなった場合に、横スクロールさせる-->
+    <div class="table-responsive">
+      <table class="table table-hover table-condensed">
+        <thead>
+          <tr>
+            <th></th>
+            <th>施設名称</th>
+            <th>施設住所</th>
+            <th>電話番号</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @shelter_users.each do |user| %>
+          <tr>
+          <td class="align-middle">
+            <%= link_to user_shelter_path(user) do %>
+              <%= image_tag user.get_image(100,100), class: "rounded-circle" %>
+            <% end %>
+          </td>
+          <td class="align-middle">
+            <%= user.nickname %>
+          </td>
+          <td class="align-middle">
+            <%= user.address %>
+          </td>
+          <td class="align-middle">
+            <%= user.telephone_number %>
+          </td>
+          <td class="align-middle">
+            <%= link_to "詳細", user_path(user), class: "btn btn-success" %>
+          </td>
+          </tr>
+          <% end %>
+          <%= paginate @shelter_users %>
+        </tbody>
+      </table>
+    </div>
+
+
+    </div>
+  </div>
+</div>

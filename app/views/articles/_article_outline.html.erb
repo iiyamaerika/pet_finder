@@ -1,0 +1,29 @@
+  <div class="card-deck">
+
+    <% articles.each do |article| %>
+    <!--カードの幅指定-->
+    <div class="col-md-4">
+      <!--カードに影をつける-->
+      <div class="card shadow mb-5 bg-white rounded" style="width: 18rem">
+        <div class="card-img-top">
+          <%= image_tag(article.image, :class => "card-img-top", :size => "260x180", :alt => "投稿画像") %>
+        </div>
+        <div class="card-body">
+          <% if user_signed_in? %>
+          <div id="article_<%= article.id %>" >
+            <div class="favorite-btn">
+              <%= render "favorites/favorite_btn", article: article %>
+            </div>
+          </div>
+          <% end %>
+          <p class="card-text"><%= article.status_i18n %></p>
+          <h5 class="card-title"><%= article.title %></h5>
+          <p class="card-text"><%= article.place %></p>
+          <p class="card-text"><%= article.created_at.strftime('%Y/%m/%d') %></p>
+          <p class="card-text">コメント件数：<%= article.post_comments.count %></p>
+          <%= link_to "詳細へ", article_path(article.id), class: "btn btn-sm btn-success" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>

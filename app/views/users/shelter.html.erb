@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 mt-5 ml-5 mb-5">
+      <h4>保護施設詳細</h4>
+      <div>
+        <div class="mt-2 mb-2">
+          <%= image_tag @user.get_image(200,200), class: "rounded-circle" %>
+        </div>
+        <p>施設名称：<%= @user.name %></p>
+        <p>施設名称(カナ)：<%= @user.name_kana %></p>
+        <p>施設住所：<%= @user.address %></p>
+        <p>電話番号：<%= @user.telephone_number %></p>
+        <p>サイト登録日<%= @user.created_at.strftime('%Y/%m/%d') %></p>
+        <p>フォロー数：
+          <%= link_to user_followings_path(@user) do %>
+            <%= @user.followings.count %>
+          <% end %>
+        </p>
+        <p>フォロワー数：
+          <%= link_to user_followers_path(@user) do %>
+            <%= @user.followers.count %>
+          <% end %>
+        </p>
+      </div>
+
+      <% if user_signed_in? %>
+        <% if @user == current_user %>
+          <%= link_to "会員情報変更", edit_user_registration_path(current_user.id), class: "btn btn-sm btn btn-primary" %>
+        <% else %>
+          <% if current_user.following?(@user) %>
+            <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-sm btn-success" %>
+          <% else %>
+            <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-sm btn-success" %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    </div>
+
+    <div  class="col-md-8 mt-5">
+      <h2 class="mb-4">投稿記事一覧</h2>
+      <%= render 'articles/article_outline', articles: @articles %>
+      <%= paginate @articles %>
+    </div>
+
+  </div>
+</div>

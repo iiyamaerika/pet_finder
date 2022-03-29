@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 mt-5 ml-5">
+      <%= render 'searches/search_form', q: @q %>
+    </div>
+    <div class="col-md-8 mt-5">
+      <% if @q.title_or_introduction_or_animal_breed_or_place_or_animal_type_cont != nil %>
+      <h3 class="subtitle mb-5"><%= "#{@q.title_or_introduction_or_animal_breed_or_place_or_animal_type_cont} の検索結果" %></h3>
+      <% else %>
+      <h3 class="subtitle mb-5"><%= "検索結果" %></h3>
+      <% end %>
+      <%= render 'articles/article_outline', articles: @search_articles %>
+
+      <%= paginate @search_articles %>
+
+    </div>
+  </div>
+</div>
