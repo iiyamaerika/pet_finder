@@ -47,9 +47,13 @@
 
 https://docs.google.com/spreadsheets/d/1u6lKhB-cDmU3CNvGFwLASZFqsPEa0Y8e8j9olUwt9CM/edit?usp=sharing
 
+## テーブル定義書、ER図、画面遷移図
+
+https://docs.google.com/spreadsheets/d/1Ta8C1pkw03-xXqmF6j-H-3B2Aqaal34F_9fbYggSUgo/edit?usp=sharing
+
 ## チャレンジ要素一覧
 
-https://docs.google.com/spreadsheets/d/1aUREvFSsEBh5XwTUmc79KTa0saMbmSQzAhg_m18ldwM/edit#gid=0
+https://docs.google.com/spreadsheets/d/1aUREvFSsEBh5XwTUmc79KTa0saMbmSQzAhg_m18ldwM/edit?usp=sharing
 
 ## 開発環境
 
