@@ -48,7 +48,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.delete
     flash[:notice] = '削除しました'
-    redirect_to articles_path
+    redirect_to user_path(current_user)
   end
 
   private
