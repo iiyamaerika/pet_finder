@@ -14,7 +14,6 @@
             <th></th>
             <th>施設名称</th>
             <th>施設住所</th>
-            <th>電話番号</th>
             <th></th>
           </tr>
         </thead>
@@ -28,16 +27,13 @@
             <% end %>
           </td>
           <td class="align-middle">
-            <%= user.nickname %>
+            <%= user.name %>
           </td>
           <td class="align-middle">
             <%= user.address %>
           </td>
           <td class="align-middle">
-            <%= user.telephone_number %>
-          </td>
-          <td class="align-middle">
-            <%= link_to "詳細", user_path(user), class: "btn btn-success" %>
+            <%= link_to "詳細", user_shelter_path(user), class: "btn btn-success" %>
           </td>
           </tr>
           <% end %>
