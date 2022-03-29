@@ -2,12 +2,8 @@
   <div class="row">
     <div class="col-md-8 offset-md-2 mt-5">
       <h2 class="mb-4">いいね一覧<i class="fas fa-thumbs-up"></i></h2>
-      <% if @favorite_articles.exists? %>
         <%= render 'articles/article_outline', articles: @favorite_articles %>
-      <% else %>
-        <p>いいねした記事はありません</p>
-      <% end %>
-      <%= paginate @favorite_articles %>
+        <%= paginate @favorite_articles %>
       </div>
 
   </div>
