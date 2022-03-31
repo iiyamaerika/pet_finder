@@ -46,7 +46,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
-    @article.delete
+    @article.destroy
     flash[:notice] = '削除しました'
     redirect_to user_path(current_user)
   end
