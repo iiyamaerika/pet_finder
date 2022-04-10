@@ -14,6 +14,9 @@
         <%= post_comment.comment %>
       </td>
       <td class="align-middle">
+        <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+      </td>
+      <td class="align-middle">
         <!--ログインユーザーが投稿したコメントであれば削除ボタンを表示-->
         <% if post_comment.user == current_user %>
           <%= link_to "削除", article_post_comment_path(post_comment.article, post_comment), method: :delete, class: "btn btn-outline-danger" %>
