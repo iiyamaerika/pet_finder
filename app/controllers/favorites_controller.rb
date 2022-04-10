@@ -2,8 +2,7 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    favorites = Favorite.where(user_id: current_user.id).pluck(:article_id)
-    @favorite_articles = Kaminari.paginate_array(Article.with_attached_image.order(created_at: :desc).find(favorites)).page(params[:page]).per(6)
+    @favorite_articles = current_user.favorite_articles.with_attached_image.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def create

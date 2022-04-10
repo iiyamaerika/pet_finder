@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   # いいね・コメント機能
   has_many :favorites, dependent: :destroy
+  has_many :favorite_articles, through: :favorites, source: :article
   has_many :post_comments, dependent: :destroy
 
   # 通知機能
