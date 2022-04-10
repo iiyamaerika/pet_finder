@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!, except: [:new, :confirm, :back, :create, :done]
-  
+
   def new
     @contact = Contact.new
   end
@@ -9,6 +9,7 @@ class ContactsController < ApplicationController
   def confirm
     @contact = Contact.new(contact_params)
     if @contact.invalid?
+      flash.now[:alert] = 'お問合せの作成に失敗しました（＊は全て記入してください）'
       render :new
     end
   end
