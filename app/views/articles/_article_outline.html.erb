@@ -6,7 +6,7 @@
       <!--カードに影をつける-->
       <div class="card shadow mb-5 bg-white rounded" style="width: 18rem">
         <div class="card-img-top">
-          <%= image_tag(article.image, :class => "card-img-top", :size => "260x180", :alt => "投稿画像") %>
+          <%= image_tag article.get_image(260,180) %>
         </div>
         <div class="card-body">
           <% if user_signed_in? %>

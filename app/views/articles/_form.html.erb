@@ -5,16 +5,16 @@
       <h5 class="mt-3"> <span class="mark">状況※</span></h5>
       <div>
         <%= f.radio_button :status, "lost", checked: "checked" %>
-        <%= f.label :status, "迷子" %>
+        <%= f.label :status, "迷子", value: :lost  %>
         <br>
         <%= f.radio_button :status, "protection" %>
-        <%= f.label :status, "保護" %>
+        <%= f.label :status, "保護", value: :protection  %>
         <br>
         <%= f.radio_button :status, "foster_homes" %>
-        <%= f.label :status, "里親募集" %>
+        <%= f.label :status, "里親募集", value: :foster_homes  %>
         <br>
         <%= f.radio_button :status, "solved" %>
-        <%= f.label :status, "解決済み" %>
+        <%= f.label :status, "解決済み", value: :solved %>
       </div>
 
 
