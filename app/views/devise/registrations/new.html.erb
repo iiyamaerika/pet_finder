@@ -2,79 +2,79 @@
   <div class="row">
     <div class="col-md-6 mt-5 offset-md-3">
 
-<h2  class="mb-4">新規登録</h2>
-
-<%= render "devise/shared/error_messages", resource: @user %>
-
-<%= form_with model: @user, url: user_registration_path do |f| %>
-
-  <p class="mark">※保護施設で登録すると、施設名（カナ含）・住所は公開されます。</p>
-  <p class="mark">公開を望まない場合は『個人ユーザー』としてご登録ください。</p>
-  <p class="mark">ご利用できる機能に違いはございません。</p>
-  <div class="form-group">
-    <%= f.radio_button :category, "private_user", checked: "checked" %>
-    <%= f.label :category, "個人ユーザー" %>
-    <br>
-    <%= f.radio_button :category, "shelter" %>
-    <%= f.label :category, "保護施設" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :お名前or施設名称 %><br>
-    <%= f.text_field :name, class: 'form-control user-name' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :お名前or施設名称（カナ） %><br>
-    <%= f.text_field :name_kana, class: 'form-control user-name-kana' %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :ニックネーム（実際にサイト上で表示されるお名前です） %><br>
-    <%= f.text_field :nickname, class: 'form-control user-nickname' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autocomplete: "email", class: 'form-control email' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :電話番号（ハイフンなし） %><br>
-    <%= f.text_field :telephone_number, class: 'form-control user-telephone-number' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :住所 %><br>
-    <%= f.text_field :address, class: 'form-control user-address' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control user-new-password' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :パスワード（確認用） %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control user-new-password' %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :ユーザー画像 %><br>
-    <%= f.file_field :image %>
-  </div>
-
-  <div class="actions mt-5">
-    <%= f.submit "新規登録",data: { confirm: '※『保護施設』で登録する場合は、施設名称・住所・サイト登録日がサイト内に公開されます。よろしいですか？' }, class: "btn btn-success" %>
-  </div>
-<% end %>
-
-<div class="mt-3 mb-5">
-<%= render "devise/shared/links" %>
-</div>
+      <h2  class="mb-4">新規登録</h2>
+      
+      <%= render "devise/shared/error_messages", resource: @user %>
+      
+      <%= form_with model: @user, url: user_registration_path do |f| %>
+      
+        <p class="mark">※保護施設で登録すると、施設名（カナ含）・住所は公開されます。</p>
+        <p class="mark">公開を望まない場合は『個人ユーザー』としてご登録ください。</p>
+        <p class="mark">ご利用できる機能に違いはございません。</p>
+        <div class="form-group">
+          <%= f.radio_button :category, "private_user", checked: "checked" %>
+          <%= f.label :category, "個人ユーザー" %>
+          <br>
+          <%= f.radio_button :category, "shelter" %>
+          <%= f.label :category, "保護施設" %>
+        </div>
+      
+        <div class="form-group">
+          <%= f.label :お名前or施設名称 %><br>
+          <%= f.text_field :name, class: 'form-control user-name' %>
+        </div>
+      
+        <div class="form-group">
+          <%= f.label :お名前or施設名称（カナ） %><br>
+          <%= f.text_field :name_kana, class: 'form-control user-name-kana' %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :ニックネーム（実際にサイト上で表示されるお名前です） %><br>
+          <%= f.text_field :nickname, class: 'form-control user-nickname' %>
+        </div>
+      
+        <div class="form-group">
+          <%= f.label :メールアドレス %><br />
+          <%= f.email_field :email, autocomplete: "email", class: 'form-control email' %>
+        </div>
+      
+        <div class="form-group">
+          <%= f.label :電話番号（ハイフンなし） %><br>
+          <%= f.text_field :telephone_number, class: 'form-control user-telephone-number' %>
+        </div>
+      
+        <div class="form-group">
+          <%= f.label :住所 %><br>
+          <%= f.text_field :address, class: 'form-control user-address' %>
+        </div>
+      
+        <div class="form-group">
+          <%= f.label :パスワード %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> 文字以上)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control user-new-password' %>
+        </div>
+      
+        <div class="form-group">
+          <%= f.label :パスワード（確認用） %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control user-new-password' %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :ユーザー画像 %><br>
+          <%= f.file_field :image %>
+        </div>
+      
+        <div class="actions mt-5">
+          <%= f.submit "新規登録",data: { confirm: '※『保護施設』で登録する場合は、施設名称・住所・サイト登録日がサイト内に公開されます。よろしいですか？' }, class: "btn btn-success" %>
+        </div>
+      <% end %>
+      
+      <div class="mt-3 mb-5">
+      <%= render "devise/shared/links" %>
+      </div>
 
    </div>
   </div>
