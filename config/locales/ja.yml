@@ -77,3 +77,6 @@ ja:
         animal_sex: "対象動物の性別"
         animal_age: "動物の年齢(およそ)"
         introduction: "説明"
+  errors:
+    messages:
+      record_invalid: "バリデーションに失敗しました: %{errors}"

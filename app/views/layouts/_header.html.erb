@@ -43,14 +43,16 @@
           <% end %>
         </p>
       </li>
-      <% if current_user.admin == false %>
-      <li class="button">
-        <p>
-          <%= link_to edit_user_registration_path, method: :get, class: "header-text" do %>
-            会員情報編集<i class="fas fa-edit"></i>
-          <% end %>
-        </p>
-      </li>
+      <% if current_user.name != "ゲストユーザー" %>
+        <% if current_user.admin == false %>
+        <li class="button">
+          <p>
+            <%= link_to edit_user_registration_path, method: :get, class: "header-text" do %>
+              会員情報編集<i class="fas fa-edit"></i>
+            <% end %>
+          </p>
+        </li>
+        <% end %>
       <% end %>
       <li class="button">
         <p>
@@ -138,6 +140,11 @@
           <%= link_to root_path, method: :get, class: "header-text" do %>
             Top<i class="fas fa-sign-in-alt"></i>
           <% end %>
+        </p>
+      </li>
+      <li class="button">
+        <p>
+          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "header-text", method: :post %>
         </p>
       </li>
       <% end %>
