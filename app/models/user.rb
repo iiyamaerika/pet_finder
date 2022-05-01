@@ -105,6 +105,18 @@ class User < ApplicationRecord
       @user = User.where("name LIKE?", "%#{word}%").and(where(category: "shelter"))
     end
   end
+  
+  def self.guest
+    find_or_create_by!(name: 'ゲストユーザー', email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲストユーザー"
+      user.name_kana = "ゲストユーザー"
+      user.nickname = "ゲストユーザー"
+      user.telephone_number = "00000000000"
+      user.address = "日本"
+      user.category = "private_user"
+    end
+  end
 
 
 

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :shelter]
+  before_action :ensure_guest_user, only: [:edit]
 
   def index
     @shelter_users = User.shelter.with_attached_image.includes([:image_attachment]).page(params[:page]).per(6)
@@ -34,5 +36,13 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  private
+  
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "ゲストユーザー"
+      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
+  end  
 
 end
